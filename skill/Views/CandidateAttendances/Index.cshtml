@@ -1,0 +1,100 @@
+﻿@model IEnumerable<skill.Models.CandidateAttendance>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CourseId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RegistationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTimeIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTimeOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AttandanceHour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifyBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IpAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Host)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CourseId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RegistationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTimeIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTimeOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AttandanceHour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifyDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifyBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsActive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsDeleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IpAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Host)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CandidateAttendanceId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CandidateAttendanceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CandidateAttendanceId })
+        </td>
+    </tr>
+}
+
+</table>

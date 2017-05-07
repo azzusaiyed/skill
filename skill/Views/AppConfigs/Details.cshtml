@@ -1,0 +1,43 @@
+﻿@model skill.Models.AppConfig
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AppConfig</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Appkey)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Appkey)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AppConfigId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

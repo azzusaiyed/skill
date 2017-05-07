@@ -1,0 +1,1612 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="skillModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AppConfig">
+          <Key>
+            <PropertyRef Name="AppConfigId" />
+          </Key>
+          <Property Name="AppConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Appkey" Type="nvarchar" MaxLength="200" />
+          <Property Name="AppValue" Type="nvarchar(max)" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="BranchMst">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="150" />
+          <Property Name="BranchAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="150" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CandidateAttendance">
+          <Key>
+            <PropertyRef Name="CandidateAttendanceId" />
+          </Key>
+          <Property Name="CandidateAttendanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="RegistationId" Type="int" />
+          <Property Name="DateTimeIn" Type="datetime" />
+          <Property Name="DateTimeOut" Type="datetime" />
+          <Property Name="AttandanceHour" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CandidateDoc">
+          <Key>
+            <PropertyRef Name="CandidateDocId" />
+          </Key>
+          <Property Name="CandidateDocId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" />
+          <Property Name="DocumentMstId" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CandidateJobMst">
+          <Key>
+            <PropertyRef Name="CandidateJobId" />
+          </Key>
+          <Property Name="CandidateJobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" />
+          <Property Name="CompanyId" Type="int" />
+          <Property Name="IsCertificateIssued" Type="bit" />
+          <Property Name="IssueDate" Type="datetime" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="50" />
+          <Property Name="OfferLetter" Type="nvarchar" MaxLength="150" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CandidateLanguage">
+          <Key>
+            <PropertyRef Name="CadidateLanguageId" />
+          </Key>
+          <Property Name="CadidateLanguageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" />
+          <Property Name="LanguageMstId" Type="int" />
+        </EntityType>
+        <EntityType Name="CategoryMst">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CategoryAbb" Type="nvarchar" MaxLength="50" />
+          <Property Name="SeqNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CityMst">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistrictId" Type="int" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Pincode" Type="nvarchar" MaxLength="10" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CompnayMst">
+          <Key>
+            <PropertyRef Name="CopmanyId" />
+          </Key>
+          <Property Name="CopmanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyAbb" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="ContantNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Contactus">
+          <Key>
+            <PropertyRef Name="Contactusid" />
+          </Key>
+          <Property Name="Contactusid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Emailid" Type="nvarchar" MaxLength="100" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="100" />
+          <Property Name="Details" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="HostName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CourseDocMapping">
+          <Key>
+            <PropertyRef Name="CourseDocMappingId" />
+          </Key>
+          <Property Name="CourseDocMappingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="DocTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocDetail" Type="text" />
+          <Property Name="FIleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CourseMst">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="TrainerId" Type="int" />
+          <Property Name="BranchId" Type="int" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="150" />
+          <Property Name="CourseAbb" Type="nvarchar" MaxLength="150" />
+          <Property Name="ShotDescription" Type="text" />
+          <Property Name="Overview" Type="text" />
+          <Property Name="Description" Type="text" />
+          <Property Name="OfflineSeat" Type="int" />
+          <Property Name="OnlineSeat" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="DurationInHours" Type="float" />
+          <Property Name="ExtentionDate" Type="datetime" />
+          <Property Name="PendingOnlineSeat" Type="int" />
+          <Property Name="PendingOfflineSeat" Type="int" />
+          <Property Name="AvgRating" Type="float" />
+          <Property Name="CoursePDF" Type="nvarchar" MaxLength="250" />
+          <Property Name="CoursePhoto" Type="nvarchar" MaxLength="250" />
+          <Property Name="CourseVideoYouTubeLink" Type="nvarchar" MaxLength="250" />
+          <Property Name="CourseDocId" Type="int" />
+          <Property Name="CourseFee" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CourseInitialFee" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CoursePaymentDetail">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationId" Type="int" />
+          <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="PaymentAmount" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CourseRegistrationDetail">
+          <Key>
+            <PropertyRef Name="CourseRegistrationDetailId" />
+          </Key>
+          <Property Name="CourseRegistrationDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseId" Type="int" />
+          <Property Name="RegistrationId" Type="int" />
+          <Property Name="Mode" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentStatus" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalPaymentAmount" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="PendingPaymentAmount" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DistrictMst">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="DistrictName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="DocumentMst">
+          <Key>
+            <PropertyRef Name="DocumentMstId" />
+          </Key>
+          <Property Name="DocumentMstId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DocName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DocTitle" Type="nvarchar" MaxLength="150" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="varchar(max)" />
+          <Property Name="IpAddress" Type="varchar" MaxLength="100" />
+          <Property Name="Source" Type="varchar" MaxLength="4000" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Browser" Type="varchar" MaxLength="100" />
+          <Property Name="ErrorDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LanguageMst">
+          <Key>
+            <PropertyRef Name="LanguageMstId" />
+          </Key>
+          <Property Name="LanguageMstId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguageName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="menuMst">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentMenuID" Type="int" />
+          <Property Name="MenuType" Type="int" />
+          <Property Name="IsAdminPage" Type="bit" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="NameGuj" Type="nvarchar" MaxLength="255" />
+          <Property Name="URL" Type="nvarchar" MaxLength="500" />
+          <Property Name="ShowInMenu" Type="bit" />
+          <Property Name="Icon" Type="nvarchar(max)" />
+          <Property Name="SeqNo" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="HostName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RegistrationMst">
+          <Key>
+            <PropertyRef Name="RegistrationId" />
+          </Key>
+          <Property Name="RegistrationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="DOB" Type="datetime" />
+          <Property Name="Education" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="Age" Type="int" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="LanguageId" Type="int" />
+          <Property Name="DocumentId" Type="int" />
+        </EntityType>
+        <EntityType Name="roleMenuMapping">
+          <Key>
+            <PropertyRef Name="roleMenuMappingId" />
+          </Key>
+          <Property Name="roleMenuMappingId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleID" Type="bigint" />
+          <Property Name="MenuId" Type="bigint" />
+          <Property Name="AllowInsert" Type="bit" Nullable="false" />
+          <Property Name="AllowUpdate" Type="bit" Nullable="false" />
+          <Property Name="AllowDelete" Type="bit" Nullable="false" />
+          <Property Name="AllowView" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="HostName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="roleMst">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleType" Type="bigint" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="HostName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SiteConfig">
+          <Key>
+            <PropertyRef Name="SiteConfigId" />
+          </Key>
+          <Property Name="SiteConfigId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="errorMailTo" Type="nvarchar" MaxLength="200" />
+          <Property Name="errorMailCC" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="StateMst">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="templateMst">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ParentTemplateId" Type="int" />
+          <Property Name="DisplayOrder" Type="int" />
+          <Property Name="Detail" Type="nvarchar(max)" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainerMst">
+          <Key>
+            <PropertyRef Name="TrainerId" />
+          </Key>
+          <Property Name="TrainerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailId" Type="nvarchar" MaxLength="150" />
+          <Property Name="MobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="50" />
+          <Property Name="ShortDetail" Type="text" />
+          <Property Name="Details" Type="text" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="250" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="bigint" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserMst">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="50" />
+          <Property Name="BranchId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="ModifyDate" Type="datetime" />
+          <Property Name="ModifyBy" Type="nvarchar" MaxLength="150" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="userRole">
+          <Key>
+            <PropertyRef Name="userRoleMappingId" />
+          </Key>
+          <Property Name="userRoleMappingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="bigint" />
+          <Property Name="RoleId" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="bigint" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ModifiedBy" Type="bigint" />
+          <Property Name="ModifiedDate" Type="datetime" />
+          <Property Name="HostName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_DistrictMst_StateMst">
+          <End Role="StateMst" Type="Self.StateMst" Multiplicity="0..1" />
+          <End Role="DistrictMst" Type="Self.DistrictMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMst">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="DistrictMst">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="skillModelStoreContainer">
+          <EntitySet Name="AppConfig" EntityType="Self.AppConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BranchMst" EntityType="Self.BranchMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateAttendance" EntityType="Self.CandidateAttendance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateDoc" EntityType="Self.CandidateDoc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateJobMst" EntityType="Self.CandidateJobMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CandidateLanguage" EntityType="Self.CandidateLanguage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CategoryMst" EntityType="Self.CategoryMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CityMst" EntityType="Self.CityMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompnayMst" EntityType="Self.CompnayMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contactus" EntityType="Self.Contactus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseDocMapping" EntityType="Self.CourseDocMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseMst" EntityType="Self.CourseMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoursePaymentDetail" EntityType="Self.CoursePaymentDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseRegistrationDetail" EntityType="Self.CourseRegistrationDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistrictMst" EntityType="Self.DistrictMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DocumentMst" EntityType="Self.DocumentMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LanguageMst" EntityType="Self.LanguageMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="menuMst" EntityType="Self.menuMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistrationMst" EntityType="Self.RegistrationMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roleMenuMapping" EntityType="Self.roleMenuMapping" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="roleMst" EntityType="Self.roleMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SiteConfig" EntityType="Self.SiteConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateMst" EntityType="Self.StateMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="templateMst" EntityType="Self.templateMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TrainerMst" EntityType="Self.TrainerMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMst" EntityType="Self.UserMst" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userRole" EntityType="Self.userRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DistrictMst_StateMst" Association="Self.FK_DistrictMst_StateMst">
+            <End Role="StateMst" EntitySet="StateMst" />
+            <End Role="DistrictMst" EntitySet="DistrictMst" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="skillModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AppConfig">
+          <Key>
+            <PropertyRef Name="AppConfigId" />
+          </Key>
+          <Property Name="AppConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Appkey" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AppValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="BranchMst">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" />
+          <Property Name="BranchName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BranchAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CandidateAttendance">
+          <Key>
+            <PropertyRef Name="CandidateAttendanceId" />
+          </Key>
+          <Property Name="CandidateAttendanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="RegistationId" Type="Int32" />
+          <Property Name="DateTimeIn" Type="DateTime" Precision="3" />
+          <Property Name="DateTimeOut" Type="DateTime" Precision="3" />
+          <Property Name="AttandanceHour" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CandidateDoc">
+          <Key>
+            <PropertyRef Name="CandidateDocId" />
+          </Key>
+          <Property Name="CandidateDocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="DocumentMstId" Type="Int32" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CandidateJobMst">
+          <Key>
+            <PropertyRef Name="CandidateJobId" />
+          </Key>
+          <Property Name="CandidateJobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="CompanyId" Type="Int32" />
+          <Property Name="IsCertificateIssued" Type="Boolean" />
+          <Property Name="IssueDate" Type="DateTime" Precision="3" />
+          <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OfferLetter" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CandidateLanguage">
+          <Key>
+            <PropertyRef Name="CadidateLanguageId" />
+          </Key>
+          <Property Name="CadidateLanguageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="LanguageMstId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CategoryMst">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryAbb" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SeqNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CityMst">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="CityName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Pincode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CompnayMst">
+          <Key>
+            <PropertyRef Name="CopmanyId" />
+          </Key>
+          <Property Name="CopmanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAbb" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContantNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Contactu">
+          <Key>
+            <PropertyRef Name="Contactusid" />
+          </Key>
+          <Property Name="Contactusid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Emailid" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CourseDocMapping">
+          <Key>
+            <PropertyRef Name="CourseDocMappingId" />
+          </Key>
+          <Property Name="CourseDocMappingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="DocTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FIleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CourseMst">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="TrainerId" Type="Int32" />
+          <Property Name="BranchId" Type="Int32" />
+          <Property Name="CourseName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CourseAbb" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ShotDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Overview" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="OfflineSeat" Type="Int32" />
+          <Property Name="OnlineSeat" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="DurationInHours" Type="Double" />
+          <Property Name="ExtentionDate" Type="DateTime" Precision="3" />
+          <Property Name="PendingOnlineSeat" Type="Int32" />
+          <Property Name="PendingOfflineSeat" Type="Int32" />
+          <Property Name="AvgRating" Type="Double" />
+          <Property Name="CoursePDF" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CoursePhoto" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CourseVideoYouTubeLink" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="CourseDocId" Type="Int32" />
+          <Property Name="CourseFee" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CourseInitialFee" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CoursePaymentDetail">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="PaymentMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentAmount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CourseRegistrationDetail">
+          <Key>
+            <PropertyRef Name="CourseRegistrationDetailId" />
+          </Key>
+          <Property Name="CourseRegistrationDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseId" Type="Int32" />
+          <Property Name="RegistrationId" Type="Int32" />
+          <Property Name="Mode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalPaymentAmount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="PendingPaymentAmount" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DistrictMst">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="DistrictName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StateMst" Relationship="skillModel.FK_DistrictMst_StateMst" FromRole="DistrictMst" ToRole="StateMst" />
+        </EntityType>
+        <EntityType Name="DocumentMst">
+          <Key>
+            <PropertyRef Name="DocumentMstId" />
+          </Key>
+          <Property Name="DocumentMstId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DocName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DocTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Source" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Browser" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LanguageMst">
+          <Key>
+            <PropertyRef Name="LanguageMstId" />
+          </Key>
+          <Property Name="LanguageMstId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="menuMst">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentMenuID" Type="Int32" />
+          <Property Name="MenuType" Type="Int32" />
+          <Property Name="IsAdminPage" Type="Boolean" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NameGuj" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShowInMenu" Type="Boolean" />
+          <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeqNo" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="RegistrationMst">
+          <Key>
+            <PropertyRef Name="RegistrationId" />
+          </Key>
+          <Property Name="RegistrationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DOB" Type="DateTime" Precision="3" />
+          <Property Name="Education" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="StateID" Type="Int32" />
+          <Property Name="LanguageId" Type="Int32" />
+          <Property Name="DocumentId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="roleMenuMapping">
+          <Key>
+            <PropertyRef Name="roleMenuMappingId" />
+          </Key>
+          <Property Name="roleMenuMappingId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleID" Type="Int64" />
+          <Property Name="MenuId" Type="Int64" />
+          <Property Name="AllowInsert" Type="Boolean" Nullable="false" />
+          <Property Name="AllowUpdate" Type="Boolean" Nullable="false" />
+          <Property Name="AllowDelete" Type="Boolean" Nullable="false" />
+          <Property Name="AllowView" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="roleMst">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleType" Type="Int64" />
+          <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SiteConfig">
+          <Key>
+            <PropertyRef Name="SiteConfigId" />
+          </Key>
+          <Property Name="SiteConfigId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="errorMailTo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="errorMailCC" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StateMst">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DistrictMsts" Relationship="skillModel.FK_DistrictMst_StateMst" FromRole="StateMst" ToRole="DistrictMst" />
+        </EntityType>
+        <EntityType Name="templateMst">
+          <Key>
+            <PropertyRef Name="TemplateId" />
+          </Key>
+          <Property Name="TemplateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ParentTemplateId" Type="Int32" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainerMst">
+          <Key>
+            <PropertyRef Name="TrainerId" />
+          </Key>
+          <Property Name="TrainerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Photo" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="Int64" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserMst">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BranchId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ModifyDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifyBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="userRole">
+          <Key>
+            <PropertyRef Name="userRoleMappingId" />
+          </Key>
+          <Property Name="userRoleMappingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int64" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int64" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int64" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="skillEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AppConfigs" EntityType="Self.AppConfig" />
+          <EntitySet Name="BranchMsts" EntityType="Self.BranchMst" />
+          <EntitySet Name="CandidateAttendances" EntityType="Self.CandidateAttendance" />
+          <EntitySet Name="CandidateDocs" EntityType="Self.CandidateDoc" />
+          <EntitySet Name="CandidateJobMsts" EntityType="Self.CandidateJobMst" />
+          <EntitySet Name="CandidateLanguages" EntityType="Self.CandidateLanguage" />
+          <EntitySet Name="CategoryMsts" EntityType="Self.CategoryMst" />
+          <EntitySet Name="CityMsts" EntityType="Self.CityMst" />
+          <EntitySet Name="CompnayMsts" EntityType="Self.CompnayMst" />
+          <EntitySet Name="Contactus" EntityType="Self.Contactu" />
+          <EntitySet Name="CourseDocMappings" EntityType="Self.CourseDocMapping" />
+          <EntitySet Name="CourseMsts" EntityType="Self.CourseMst" />
+          <EntitySet Name="CoursePaymentDetails" EntityType="Self.CoursePaymentDetail" />
+          <EntitySet Name="CourseRegistrationDetails" EntityType="Self.CourseRegistrationDetail" />
+          <EntitySet Name="DistrictMsts" EntityType="Self.DistrictMst" />
+          <EntitySet Name="DocumentMsts" EntityType="Self.DocumentMst" />
+          <EntitySet Name="Errors" EntityType="Self.Error" />
+          <EntitySet Name="LanguageMsts" EntityType="Self.LanguageMst" />
+          <EntitySet Name="menuMsts" EntityType="Self.menuMst" />
+          <EntitySet Name="RegistrationMsts" EntityType="Self.RegistrationMst" />
+          <EntitySet Name="roleMenuMappings" EntityType="Self.roleMenuMapping" />
+          <EntitySet Name="roleMsts" EntityType="Self.roleMst" />
+          <EntitySet Name="SiteConfigs" EntityType="Self.SiteConfig" />
+          <EntitySet Name="StateMsts" EntityType="Self.StateMst" />
+          <EntitySet Name="templateMsts" EntityType="Self.templateMst" />
+          <EntitySet Name="TrainerMsts" EntityType="Self.TrainerMst" />
+          <EntitySet Name="UserMsts" EntityType="Self.UserMst" />
+          <EntitySet Name="userRoles" EntityType="Self.userRole" />
+          <AssociationSet Name="FK_DistrictMst_StateMst" Association="skillModel.FK_DistrictMst_StateMst">
+            <End Role="StateMst" EntitySet="StateMsts" />
+            <End Role="DistrictMst" EntitySet="DistrictMsts" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_DistrictMst_StateMst">
+          <End Type="skillModel.StateMst" Role="StateMst" Multiplicity="0..1" />
+          <End Type="skillModel.DistrictMst" Role="DistrictMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMst">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="DistrictMst">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="skillModelStoreContainer" CdmEntityContainer="skillEntities">
+          <EntitySetMapping Name="AppConfigs">
+            <EntityTypeMapping TypeName="skillModel.AppConfig">
+              <MappingFragment StoreEntitySet="AppConfig">
+                <ScalarProperty Name="AppConfigId" ColumnName="AppConfigId" />
+                <ScalarProperty Name="Appkey" ColumnName="Appkey" />
+                <ScalarProperty Name="AppValue" ColumnName="AppValue" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BranchMsts">
+            <EntityTypeMapping TypeName="skillModel.BranchMst">
+              <MappingFragment StoreEntitySet="BranchMst">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+                <ScalarProperty Name="BranchAddress" ColumnName="BranchAddress" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateAttendances">
+            <EntityTypeMapping TypeName="skillModel.CandidateAttendance">
+              <MappingFragment StoreEntitySet="CandidateAttendance">
+                <ScalarProperty Name="CandidateAttendanceId" ColumnName="CandidateAttendanceId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="RegistationId" ColumnName="RegistationId" />
+                <ScalarProperty Name="DateTimeIn" ColumnName="DateTimeIn" />
+                <ScalarProperty Name="DateTimeOut" ColumnName="DateTimeOut" />
+                <ScalarProperty Name="AttandanceHour" ColumnName="AttandanceHour" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateDocs">
+            <EntityTypeMapping TypeName="skillModel.CandidateDoc">
+              <MappingFragment StoreEntitySet="CandidateDoc">
+                <ScalarProperty Name="CandidateDocId" ColumnName="CandidateDocId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="DocumentMstId" ColumnName="DocumentMstId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateJobMsts">
+            <EntityTypeMapping TypeName="skillModel.CandidateJobMst">
+              <MappingFragment StoreEntitySet="CandidateJobMst">
+                <ScalarProperty Name="CandidateJobId" ColumnName="CandidateJobId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="IsCertificateIssued" ColumnName="IsCertificateIssued" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="OfferLetter" ColumnName="OfferLetter" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CandidateLanguages">
+            <EntityTypeMapping TypeName="skillModel.CandidateLanguage">
+              <MappingFragment StoreEntitySet="CandidateLanguage">
+                <ScalarProperty Name="CadidateLanguageId" ColumnName="CadidateLanguageId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="LanguageMstId" ColumnName="LanguageMstId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CategoryMsts">
+            <EntityTypeMapping TypeName="skillModel.CategoryMst">
+              <MappingFragment StoreEntitySet="CategoryMst">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryAbb" ColumnName="CategoryAbb" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CityMsts">
+            <EntityTypeMapping TypeName="skillModel.CityMst">
+              <MappingFragment StoreEntitySet="CityMst">
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompnayMsts">
+            <EntityTypeMapping TypeName="skillModel.CompnayMst">
+              <MappingFragment StoreEntitySet="CompnayMst">
+                <ScalarProperty Name="CopmanyId" ColumnName="CopmanyId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyAbb" ColumnName="CompanyAbb" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContantNo" ColumnName="ContantNo" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contactus">
+            <EntityTypeMapping TypeName="skillModel.Contactu">
+              <MappingFragment StoreEntitySet="Contactus">
+                <ScalarProperty Name="Contactusid" ColumnName="Contactusid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseDocMappings">
+            <EntityTypeMapping TypeName="skillModel.CourseDocMapping">
+              <MappingFragment StoreEntitySet="CourseDocMapping">
+                <ScalarProperty Name="CourseDocMappingId" ColumnName="CourseDocMappingId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="DocTitle" ColumnName="DocTitle" />
+                <ScalarProperty Name="DocDetail" ColumnName="DocDetail" />
+                <ScalarProperty Name="FIleName" ColumnName="FIleName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseMsts">
+            <EntityTypeMapping TypeName="skillModel.CourseMst">
+              <MappingFragment StoreEntitySet="CourseMst">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseAbb" ColumnName="CourseAbb" />
+                <ScalarProperty Name="ShotDescription" ColumnName="ShotDescription" />
+                <ScalarProperty Name="Overview" ColumnName="Overview" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="OfflineSeat" ColumnName="OfflineSeat" />
+                <ScalarProperty Name="OnlineSeat" ColumnName="OnlineSeat" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="DurationInHours" ColumnName="DurationInHours" />
+                <ScalarProperty Name="ExtentionDate" ColumnName="ExtentionDate" />
+                <ScalarProperty Name="PendingOnlineSeat" ColumnName="PendingOnlineSeat" />
+                <ScalarProperty Name="PendingOfflineSeat" ColumnName="PendingOfflineSeat" />
+                <ScalarProperty Name="AvgRating" ColumnName="AvgRating" />
+                <ScalarProperty Name="CoursePDF" ColumnName="CoursePDF" />
+                <ScalarProperty Name="CoursePhoto" ColumnName="CoursePhoto" />
+                <ScalarProperty Name="CourseVideoYouTubeLink" ColumnName="CourseVideoYouTubeLink" />
+                <ScalarProperty Name="CourseDocId" ColumnName="CourseDocId" />
+                <ScalarProperty Name="CourseFee" ColumnName="CourseFee" />
+                <ScalarProperty Name="CourseInitialFee" ColumnName="CourseInitialFee" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoursePaymentDetails">
+            <EntityTypeMapping TypeName="skillModel.CoursePaymentDetail">
+              <MappingFragment StoreEntitySet="CoursePaymentDetail">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentAmount" ColumnName="PaymentAmount" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseRegistrationDetails">
+            <EntityTypeMapping TypeName="skillModel.CourseRegistrationDetail">
+              <MappingFragment StoreEntitySet="CourseRegistrationDetail">
+                <ScalarProperty Name="CourseRegistrationDetailId" ColumnName="CourseRegistrationDetailId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="TotalPaymentAmount" ColumnName="TotalPaymentAmount" />
+                <ScalarProperty Name="PendingPaymentAmount" ColumnName="PendingPaymentAmount" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistrictMsts">
+            <EntityTypeMapping TypeName="skillModel.DistrictMst">
+              <MappingFragment StoreEntitySet="DistrictMst">
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocumentMsts">
+            <EntityTypeMapping TypeName="skillModel.DocumentMst">
+              <MappingFragment StoreEntitySet="DocumentMst">
+                <ScalarProperty Name="DocumentMstId" ColumnName="DocumentMstId" />
+                <ScalarProperty Name="DocName" ColumnName="DocName" />
+                <ScalarProperty Name="DocTitle" ColumnName="DocTitle" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Errors">
+            <EntityTypeMapping TypeName="skillModel.Error">
+              <MappingFragment StoreEntitySet="Error">
+                <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="ErrorDate" ColumnName="ErrorDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LanguageMsts">
+            <EntityTypeMapping TypeName="skillModel.LanguageMst">
+              <MappingFragment StoreEntitySet="LanguageMst">
+                <ScalarProperty Name="LanguageMstId" ColumnName="LanguageMstId" />
+                <ScalarProperty Name="LanguageName" ColumnName="LanguageName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menuMsts">
+            <EntityTypeMapping TypeName="skillModel.menuMst">
+              <MappingFragment StoreEntitySet="menuMst">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="ParentMenuID" ColumnName="ParentMenuID" />
+                <ScalarProperty Name="MenuType" ColumnName="MenuType" />
+                <ScalarProperty Name="IsAdminPage" ColumnName="IsAdminPage" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NameGuj" ColumnName="NameGuj" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="ShowInMenu" ColumnName="ShowInMenu" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistrationMsts">
+            <EntityTypeMapping TypeName="skillModel.RegistrationMst">
+              <MappingFragment StoreEntitySet="RegistrationMst">
+                <ScalarProperty Name="RegistrationId" ColumnName="RegistrationId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="DocumentId" ColumnName="DocumentId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roleMenuMappings">
+            <EntityTypeMapping TypeName="skillModel.roleMenuMapping">
+              <MappingFragment StoreEntitySet="roleMenuMapping">
+                <ScalarProperty Name="roleMenuMappingId" ColumnName="roleMenuMappingId" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="AllowInsert" ColumnName="AllowInsert" />
+                <ScalarProperty Name="AllowUpdate" ColumnName="AllowUpdate" />
+                <ScalarProperty Name="AllowDelete" ColumnName="AllowDelete" />
+                <ScalarProperty Name="AllowView" ColumnName="AllowView" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roleMsts">
+            <EntityTypeMapping TypeName="skillModel.roleMst">
+              <MappingFragment StoreEntitySet="roleMst">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleType" ColumnName="RoleType" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SiteConfigs">
+            <EntityTypeMapping TypeName="skillModel.SiteConfig">
+              <MappingFragment StoreEntitySet="SiteConfig">
+                <ScalarProperty Name="SiteConfigId" ColumnName="SiteConfigId" />
+                <ScalarProperty Name="errorMailTo" ColumnName="errorMailTo" />
+                <ScalarProperty Name="errorMailCC" ColumnName="errorMailCC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateMsts">
+            <EntityTypeMapping TypeName="skillModel.StateMst">
+              <MappingFragment StoreEntitySet="StateMst">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="templateMsts">
+            <EntityTypeMapping TypeName="skillModel.templateMst">
+              <MappingFragment StoreEntitySet="templateMst">
+                <ScalarProperty Name="TemplateId" ColumnName="TemplateId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentTemplateId" ColumnName="ParentTemplateId" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrainerMsts">
+            <EntityTypeMapping TypeName="skillModel.TrainerMst">
+              <MappingFragment StoreEntitySet="TrainerMst">
+                <ScalarProperty Name="TrainerId" ColumnName="TrainerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="ShortDetail" ColumnName="ShortDetail" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMsts">
+            <EntityTypeMapping TypeName="skillModel.UserMst">
+              <MappingFragment StoreEntitySet="UserMst">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifyDate" ColumnName="ModifyDate" />
+                <ScalarProperty Name="ModifyBy" ColumnName="ModifyBy" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userRoles">
+            <EntityTypeMapping TypeName="skillModel.userRole">
+              <MappingFragment StoreEntitySet="userRole">
+                <ScalarProperty Name="userRoleMappingId" ColumnName="userRoleMappingId" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="HostName" ColumnName="HostName" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
