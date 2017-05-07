@@ -38,10 +38,7 @@ namespace skill.Controllers
         // GET: DistrictMasters/Create
         public ActionResult Create()
         {
-            var stateMsts = from doc in db.StateMsts
-                           orderby doc.StateName, doc.StateId
-                           select new SelectListItem { Value = doc.StateId.ToString(), Text = doc.StateName };
-            ViewBag.StateId = stateMsts;
+            ViewBag.StateId = new SelectList(db.StateMsts.OrderBy(o => o.StateName), "StateId", "StateName", string.Empty);
 
             return View();
         }
@@ -75,7 +72,7 @@ namespace skill.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StateId = new SelectList(db.StateMsts, "StateId", "StateName", districtMst.StateId);
+            ViewBag.StateId = new SelectList(db.StateMsts.OrderBy(o => o.StateName), "StateId", "StateName", districtMst.StateId);
             return View(districtMst);
         }
 
