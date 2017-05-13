@@ -14,6 +14,12 @@ namespace skill.Models
     
     public partial class LanguageMst
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LanguageMst()
+        {
+            this.CandidateLanguages = new HashSet<CandidateLanguage>();
+        }
+    
         public int LanguageMstId { get; set; }
         public string LanguageName { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
@@ -24,5 +30,8 @@ namespace skill.Models
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
         public string Host { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateLanguage> CandidateLanguages { get; set; }
     }
 }

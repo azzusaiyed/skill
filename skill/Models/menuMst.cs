@@ -14,14 +14,20 @@ namespace skill.Models
     
     public partial class menuMst
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public menuMst()
+        {
+            this.roleMenuMappings = new HashSet<roleMenuMapping>();
+        }
+    
         public int MenuID { get; set; }
         public Nullable<int> ParentMenuID { get; set; }
         public Nullable<int> MenuType { get; set; }
-        public Nullable<bool> IsAdminPage { get; set; }
+        public bool IsAdminPage { get; set; }
         public string Name { get; set; }
         public string NameGuj { get; set; }
         public string URL { get; set; }
-        public Nullable<bool> ShowInMenu { get; set; }
+        public bool ShowInMenu { get; set; }
         public string Icon { get; set; }
         public Nullable<int> SeqNo { get; set; }
         public bool IsActive { get; set; }
@@ -32,5 +38,8 @@ namespace skill.Models
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string HostName { get; set; }
         public string IpAddress { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<roleMenuMapping> roleMenuMappings { get; set; }
     }
 }

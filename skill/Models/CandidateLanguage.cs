@@ -17,5 +17,7 @@ namespace skill.Models
         public int CadidateLanguageId { get; set; }
         public Nullable<int> RegistrationId { get; set; }
         public Nullable<int> LanguageMstId { get; set; }
+    
+        public virtual LanguageMst LanguageMst { get; set; }
     }
 }

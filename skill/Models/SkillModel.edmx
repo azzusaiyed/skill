@@ -20,7 +20,7 @@
           </Key>
           <Property Name="BranchId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CityId" Type="int" />
-          <Property Name="BranchName" Type="nvarchar" MaxLength="150" />
+          <Property Name="BranchName" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="BranchAddress" Type="nvarchar" MaxLength="250" />
           <Property Name="EmailId" Type="nvarchar" MaxLength="150" />
           <Property Name="MobileNo" Type="nvarchar" MaxLength="20" />
@@ -74,7 +74,7 @@
           <Property Name="CandidateJobId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RegistrationId" Type="int" />
           <Property Name="CompanyId" Type="int" />
-          <Property Name="IsCertificateIssued" Type="bit" />
+          <Property Name="IsCertificateIssued" Type="bit" Nullable="false" />
           <Property Name="IssueDate" Type="datetime" />
           <Property Name="FileName" Type="nvarchar" MaxLength="50" />
           <Property Name="OfferLetter" Type="nvarchar" MaxLength="150" />
@@ -320,11 +320,11 @@
           <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ParentMenuID" Type="int" />
           <Property Name="MenuType" Type="int" />
-          <Property Name="IsAdminPage" Type="bit" />
+          <Property Name="IsAdminPage" Type="bit" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="NameGuj" Type="nvarchar" MaxLength="255" />
           <Property Name="URL" Type="nvarchar" MaxLength="500" />
-          <Property Name="ShowInMenu" Type="bit" />
+          <Property Name="ShowInMenu" Type="bit" Nullable="false" />
           <Property Name="Icon" Type="nvarchar(max)" />
           <Property Name="SeqNo" Type="int" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
@@ -363,7 +363,7 @@
           </Key>
           <Property Name="roleMenuMappingId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleID" Type="bigint" />
-          <Property Name="MenuId" Type="bigint" />
+          <Property Name="MenuId" Type="int" />
           <Property Name="AllowInsert" Type="bit" Nullable="false" />
           <Property Name="AllowUpdate" Type="bit" Nullable="false" />
           <Property Name="AllowDelete" Type="bit" Nullable="false" />
@@ -379,9 +379,9 @@
         </EntityType>
         <EntityType Name="roleMst">
           <Key>
-            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="RoleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleType" Type="bigint" />
           <Property Name="RoleName" Type="nvarchar" MaxLength="100" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
@@ -461,8 +461,8 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
-          <Property Name="RoleId" Type="nvarchar" MaxLength="50" />
-          <Property Name="BranchId" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoleId" Type="bigint" />
+          <Property Name="BranchId" Type="int" />
           <Property Name="CreatedDate" Type="datetime" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
           <Property Name="ModifyDate" Type="datetime" />
@@ -488,6 +488,198 @@
           <Property Name="HostName" Type="nvarchar" MaxLength="50" />
           <Property Name="IpAddress" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK_BranchMst_CityMst">
+          <End Role="CityMst" Type="Self.CityMst" Multiplicity="0..1" />
+          <End Role="BranchMst" Type="Self.BranchMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityMst">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="BranchMst">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateAttendance_CourseMst">
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="0..1" />
+          <End Role="CandidateAttendance" Type="Self.CandidateAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseMst">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CandidateAttendance">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateAttendance_RegistrationMst">
+          <End Role="RegistrationMst" Type="Self.RegistrationMst" Multiplicity="0..1" />
+          <End Role="CandidateAttendance" Type="Self.CandidateAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationMst">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="CandidateAttendance">
+              <PropertyRef Name="RegistationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateDoc_DocumentMst">
+          <End Role="DocumentMst" Type="Self.DocumentMst" Multiplicity="0..1" />
+          <End Role="CandidateDoc" Type="Self.CandidateDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentMst">
+              <PropertyRef Name="DocumentMstId" />
+            </Principal>
+            <Dependent Role="CandidateDoc">
+              <PropertyRef Name="DocumentMstId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateDoc_RegistrationMst">
+          <End Role="RegistrationMst" Type="Self.RegistrationMst" Multiplicity="0..1" />
+          <End Role="CandidateDoc" Type="Self.CandidateDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationMst">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="CandidateDoc">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateJobMst_CompnayMst">
+          <End Role="CompnayMst" Type="Self.CompnayMst" Multiplicity="0..1" />
+          <End Role="CandidateJobMst" Type="Self.CandidateJobMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompnayMst">
+              <PropertyRef Name="CopmanyId" />
+            </Principal>
+            <Dependent Role="CandidateJobMst">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateJobMst_RegistrationMst">
+          <End Role="RegistrationMst" Type="Self.RegistrationMst" Multiplicity="0..1" />
+          <End Role="CandidateJobMst" Type="Self.CandidateJobMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationMst">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="CandidateJobMst">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateLanguage_LanguageMst">
+          <End Role="LanguageMst" Type="Self.LanguageMst" Multiplicity="0..1" />
+          <End Role="CandidateLanguage" Type="Self.CandidateLanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LanguageMst">
+              <PropertyRef Name="LanguageMstId" />
+            </Principal>
+            <Dependent Role="CandidateLanguage">
+              <PropertyRef Name="LanguageMstId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDocMapping_CourseDocMapping">
+          <End Role="CourseDocMapping" Type="Self.CourseDocMapping" Multiplicity="1" />
+          <End Role="CourseDocMapping1" Type="Self.CourseDocMapping" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CourseDocMapping">
+              <PropertyRef Name="CourseDocMappingId" />
+            </Principal>
+            <Dependent Role="CourseDocMapping1">
+              <PropertyRef Name="CourseDocMappingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDocMapping_CourseMst">
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="0..1" />
+          <End Role="CourseDocMapping" Type="Self.CourseDocMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseMst">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseDocMapping">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseMst_BranchMst">
+          <End Role="BranchMst" Type="Self.BranchMst" Multiplicity="0..1" />
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BranchMst">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="CourseMst">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseMst_CategoryMst">
+          <End Role="CategoryMst" Type="Self.CategoryMst" Multiplicity="0..1" />
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryMst">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CourseMst">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseMst_TrainerMst">
+          <End Role="TrainerMst" Type="Self.TrainerMst" Multiplicity="0..1" />
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainerMst">
+              <PropertyRef Name="TrainerId" />
+            </Principal>
+            <Dependent Role="CourseMst">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursePaymentDetail_RegistrationMst">
+          <End Role="RegistrationMst" Type="Self.RegistrationMst" Multiplicity="0..1" />
+          <End Role="CoursePaymentDetail" Type="Self.CoursePaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationMst">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="CoursePaymentDetail">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseRegistrationDetail_CourseMst">
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="0..1" />
+          <End Role="CourseRegistrationDetail" Type="Self.CourseRegistrationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseMst">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseRegistrationDetail">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseRegistrationDetail_RegistrationMst">
+          <End Role="RegistrationMst" Type="Self.RegistrationMst" Multiplicity="0..1" />
+          <End Role="CourseRegistrationDetail" Type="Self.CourseRegistrationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationMst">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="CourseRegistrationDetail">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_DistrictMst_StateMst">
           <End Role="StateMst" Type="Self.StateMst" Multiplicity="0..1" />
           <End Role="DistrictMst" Type="Self.DistrictMst" Multiplicity="*" />
@@ -497,6 +689,66 @@
             </Principal>
             <Dependent Role="DistrictMst">
               <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roleMenuMapping_menuMst">
+          <End Role="menuMst" Type="Self.menuMst" Multiplicity="0..1" />
+          <End Role="roleMenuMapping" Type="Self.roleMenuMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="menuMst">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="roleMenuMapping">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roleMenuMapping_roleMst">
+          <End Role="roleMst" Type="Self.roleMst" Multiplicity="0..1" />
+          <End Role="roleMenuMapping" Type="Self.roleMenuMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roleMst">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="roleMenuMapping">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roleMst_roleMst">
+          <End Role="roleMst" Type="Self.roleMst" Multiplicity="1" />
+          <End Role="roleMst1" Type="Self.roleMst" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="roleMst">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="roleMst1">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMst_BranchMst">
+          <End Role="BranchMst" Type="Self.BranchMst" Multiplicity="0..1" />
+          <End Role="UserMst" Type="Self.UserMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BranchMst">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="UserMst">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMst_roleMst">
+          <End Role="roleMst" Type="Self.roleMst" Multiplicity="0..1" />
+          <End Role="UserMst" Type="Self.UserMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roleMst">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserMst">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -529,9 +781,93 @@
           <EntitySet Name="TrainerMst" EntityType="Self.TrainerMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMst" EntityType="Self.UserMst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="userRole" EntityType="Self.userRole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BranchMst_CityMst" Association="Self.FK_BranchMst_CityMst">
+            <End Role="CityMst" EntitySet="CityMst" />
+            <End Role="BranchMst" EntitySet="BranchMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateAttendance_CourseMst" Association="Self.FK_CandidateAttendance_CourseMst">
+            <End Role="CourseMst" EntitySet="CourseMst" />
+            <End Role="CandidateAttendance" EntitySet="CandidateAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateAttendance_RegistrationMst" Association="Self.FK_CandidateAttendance_RegistrationMst">
+            <End Role="RegistrationMst" EntitySet="RegistrationMst" />
+            <End Role="CandidateAttendance" EntitySet="CandidateAttendance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateDoc_DocumentMst" Association="Self.FK_CandidateDoc_DocumentMst">
+            <End Role="DocumentMst" EntitySet="DocumentMst" />
+            <End Role="CandidateDoc" EntitySet="CandidateDoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateDoc_RegistrationMst" Association="Self.FK_CandidateDoc_RegistrationMst">
+            <End Role="RegistrationMst" EntitySet="RegistrationMst" />
+            <End Role="CandidateDoc" EntitySet="CandidateDoc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateJobMst_CompnayMst" Association="Self.FK_CandidateJobMst_CompnayMst">
+            <End Role="CompnayMst" EntitySet="CompnayMst" />
+            <End Role="CandidateJobMst" EntitySet="CandidateJobMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateJobMst_RegistrationMst" Association="Self.FK_CandidateJobMst_RegistrationMst">
+            <End Role="RegistrationMst" EntitySet="RegistrationMst" />
+            <End Role="CandidateJobMst" EntitySet="CandidateJobMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateLanguage_LanguageMst" Association="Self.FK_CandidateLanguage_LanguageMst">
+            <End Role="LanguageMst" EntitySet="LanguageMst" />
+            <End Role="CandidateLanguage" EntitySet="CandidateLanguage" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDocMapping_CourseDocMapping" Association="Self.FK_CourseDocMapping_CourseDocMapping">
+            <End Role="CourseDocMapping" EntitySet="CourseDocMapping" />
+            <End Role="CourseDocMapping1" EntitySet="CourseDocMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDocMapping_CourseMst" Association="Self.FK_CourseDocMapping_CourseMst">
+            <End Role="CourseMst" EntitySet="CourseMst" />
+            <End Role="CourseDocMapping" EntitySet="CourseDocMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseMst_BranchMst" Association="Self.FK_CourseMst_BranchMst">
+            <End Role="BranchMst" EntitySet="BranchMst" />
+            <End Role="CourseMst" EntitySet="CourseMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseMst_CategoryMst" Association="Self.FK_CourseMst_CategoryMst">
+            <End Role="CategoryMst" EntitySet="CategoryMst" />
+            <End Role="CourseMst" EntitySet="CourseMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseMst_TrainerMst" Association="Self.FK_CourseMst_TrainerMst">
+            <End Role="TrainerMst" EntitySet="TrainerMst" />
+            <End Role="CourseMst" EntitySet="CourseMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursePaymentDetail_RegistrationMst" Association="Self.FK_CoursePaymentDetail_RegistrationMst">
+            <End Role="RegistrationMst" EntitySet="RegistrationMst" />
+            <End Role="CoursePaymentDetail" EntitySet="CoursePaymentDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseRegistrationDetail_CourseMst" Association="Self.FK_CourseRegistrationDetail_CourseMst">
+            <End Role="CourseMst" EntitySet="CourseMst" />
+            <End Role="CourseRegistrationDetail" EntitySet="CourseRegistrationDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseRegistrationDetail_RegistrationMst" Association="Self.FK_CourseRegistrationDetail_RegistrationMst">
+            <End Role="RegistrationMst" EntitySet="RegistrationMst" />
+            <End Role="CourseRegistrationDetail" EntitySet="CourseRegistrationDetail" />
+          </AssociationSet>
           <AssociationSet Name="FK_DistrictMst_StateMst" Association="Self.FK_DistrictMst_StateMst">
             <End Role="StateMst" EntitySet="StateMst" />
             <End Role="DistrictMst" EntitySet="DistrictMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roleMenuMapping_menuMst" Association="Self.FK_roleMenuMapping_menuMst">
+            <End Role="menuMst" EntitySet="menuMst" />
+            <End Role="roleMenuMapping" EntitySet="roleMenuMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roleMenuMapping_roleMst" Association="Self.FK_roleMenuMapping_roleMst">
+            <End Role="roleMst" EntitySet="roleMst" />
+            <End Role="roleMenuMapping" EntitySet="roleMenuMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roleMst_roleMst" Association="Self.FK_roleMst_roleMst">
+            <End Role="roleMst" EntitySet="roleMst" />
+            <End Role="roleMst1" EntitySet="roleMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMst_BranchMst" Association="Self.FK_UserMst_BranchMst">
+            <End Role="BranchMst" EntitySet="BranchMst" />
+            <End Role="UserMst" EntitySet="UserMst" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMst_roleMst" Association="Self.FK_UserMst_roleMst">
+            <End Role="roleMst" EntitySet="roleMst" />
+            <End Role="UserMst" EntitySet="UserMst" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -553,7 +889,7 @@
           </Key>
           <Property Name="BranchId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CityId" Type="Int32" />
-          <Property Name="BranchName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="BranchName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="BranchAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="EmailId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="MobileNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
@@ -565,6 +901,9 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CityMst" Relationship="Self.FK_BranchMst_CityMst" FromRole="BranchMst" ToRole="CityMst" />
+          <NavigationProperty Name="CourseMsts" Relationship="Self.FK_CourseMst_BranchMst" FromRole="BranchMst" ToRole="CourseMst" />
+          <NavigationProperty Name="UserMsts" Relationship="Self.FK_UserMst_BranchMst" FromRole="BranchMst" ToRole="UserMst" />
         </EntityType>
         <EntityType Name="CandidateAttendance">
           <Key>
@@ -583,6 +922,8 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseMst" Relationship="Self.FK_CandidateAttendance_CourseMst" FromRole="CandidateAttendance" ToRole="CourseMst" />
+          <NavigationProperty Name="RegistrationMst" Relationship="Self.FK_CandidateAttendance_RegistrationMst" FromRole="CandidateAttendance" ToRole="RegistrationMst" />
         </EntityType>
         <EntityType Name="CandidateDoc">
           <Key>
@@ -599,6 +940,8 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DocumentMst" Relationship="Self.FK_CandidateDoc_DocumentMst" FromRole="CandidateDoc" ToRole="DocumentMst" />
+          <NavigationProperty Name="RegistrationMst" Relationship="Self.FK_CandidateDoc_RegistrationMst" FromRole="CandidateDoc" ToRole="RegistrationMst" />
         </EntityType>
         <EntityType Name="CandidateJobMst">
           <Key>
@@ -607,7 +950,7 @@
           <Property Name="CandidateJobId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RegistrationId" Type="Int32" />
           <Property Name="CompanyId" Type="Int32" />
-          <Property Name="IsCertificateIssued" Type="Boolean" />
+          <Property Name="IsCertificateIssued" Type="Boolean" Nullable="false" />
           <Property Name="IssueDate" Type="DateTime" Precision="3" />
           <Property Name="FileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="OfferLetter" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
@@ -617,6 +960,8 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CompnayMst" Relationship="Self.FK_CandidateJobMst_CompnayMst" FromRole="CandidateJobMst" ToRole="CompnayMst" />
+          <NavigationProperty Name="RegistrationMst" Relationship="Self.FK_CandidateJobMst_RegistrationMst" FromRole="CandidateJobMst" ToRole="RegistrationMst" />
         </EntityType>
         <EntityType Name="CandidateLanguage">
           <Key>
@@ -625,6 +970,7 @@
           <Property Name="CadidateLanguageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RegistrationId" Type="Int32" />
           <Property Name="LanguageMstId" Type="Int32" />
+          <NavigationProperty Name="LanguageMst" Relationship="Self.FK_CandidateLanguage_LanguageMst" FromRole="CandidateLanguage" ToRole="LanguageMst" />
         </EntityType>
         <EntityType Name="CategoryMst">
           <Key>
@@ -642,6 +988,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseMsts" Relationship="Self.FK_CourseMst_CategoryMst" FromRole="CategoryMst" ToRole="CourseMst" />
         </EntityType>
         <EntityType Name="CityMst">
           <Key>
@@ -659,6 +1006,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BranchMsts" Relationship="Self.FK_BranchMst_CityMst" FromRole="CityMst" ToRole="BranchMst" />
         </EntityType>
         <EntityType Name="CompnayMst">
           <Key>
@@ -677,6 +1025,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CandidateJobMsts" Relationship="Self.FK_CandidateJobMst_CompnayMst" FromRole="CompnayMst" ToRole="CandidateJobMst" />
         </EntityType>
         <EntityType Name="Contactu">
           <Key>
@@ -713,6 +1062,9 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseDocMapping1" Relationship="Self.FK_CourseDocMapping_CourseDocMapping" FromRole="CourseDocMapping" ToRole="CourseDocMapping1" />
+          <NavigationProperty Name="CourseDocMapping2" Relationship="Self.FK_CourseDocMapping_CourseDocMapping" FromRole="CourseDocMapping1" ToRole="CourseDocMapping" />
+          <NavigationProperty Name="CourseMst" Relationship="Self.FK_CourseDocMapping_CourseMst" FromRole="CourseDocMapping" ToRole="CourseMst" />
         </EntityType>
         <EntityType Name="CourseMst">
           <Key>
@@ -749,6 +1101,12 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BranchMst" Relationship="Self.FK_CourseMst_BranchMst" FromRole="CourseMst" ToRole="BranchMst" />
+          <NavigationProperty Name="CandidateAttendances" Relationship="Self.FK_CandidateAttendance_CourseMst" FromRole="CourseMst" ToRole="CandidateAttendance" />
+          <NavigationProperty Name="CategoryMst" Relationship="Self.FK_CourseMst_CategoryMst" FromRole="CourseMst" ToRole="CategoryMst" />
+          <NavigationProperty Name="CourseDocMappings" Relationship="Self.FK_CourseDocMapping_CourseMst" FromRole="CourseMst" ToRole="CourseDocMapping" />
+          <NavigationProperty Name="TrainerMst" Relationship="Self.FK_CourseMst_TrainerMst" FromRole="CourseMst" ToRole="TrainerMst" />
+          <NavigationProperty Name="CourseRegistrationDetails" Relationship="Self.FK_CourseRegistrationDetail_CourseMst" FromRole="CourseMst" ToRole="CourseRegistrationDetail" />
         </EntityType>
         <EntityType Name="CoursePaymentDetail">
           <Key>
@@ -766,6 +1124,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RegistrationMst" Relationship="Self.FK_CoursePaymentDetail_RegistrationMst" FromRole="CoursePaymentDetail" ToRole="RegistrationMst" />
         </EntityType>
         <EntityType Name="CourseRegistrationDetail">
           <Key>
@@ -785,6 +1144,8 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseMst" Relationship="Self.FK_CourseRegistrationDetail_CourseMst" FromRole="CourseRegistrationDetail" ToRole="CourseMst" />
+          <NavigationProperty Name="RegistrationMst" Relationship="Self.FK_CourseRegistrationDetail_RegistrationMst" FromRole="CourseRegistrationDetail" ToRole="RegistrationMst" />
         </EntityType>
         <EntityType Name="DistrictMst">
           <Key>
@@ -801,7 +1162,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="StateMst" Relationship="skillModel.FK_DistrictMst_StateMst" FromRole="DistrictMst" ToRole="StateMst" />
+          <NavigationProperty Name="StateMst" Relationship="Self.FK_DistrictMst_StateMst" FromRole="DistrictMst" ToRole="StateMst" />
         </EntityType>
         <EntityType Name="DocumentMst">
           <Key>
@@ -818,6 +1179,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CandidateDocs" Relationship="Self.FK_CandidateDoc_DocumentMst" FromRole="DocumentMst" ToRole="CandidateDoc" />
         </EntityType>
         <EntityType Name="Error">
           <Key>
@@ -846,6 +1208,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CandidateLanguages" Relationship="Self.FK_CandidateLanguage_LanguageMst" FromRole="LanguageMst" ToRole="CandidateLanguage" />
         </EntityType>
         <EntityType Name="menuMst">
           <Key>
@@ -854,11 +1217,11 @@
           <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ParentMenuID" Type="Int32" />
           <Property Name="MenuType" Type="Int32" />
-          <Property Name="IsAdminPage" Type="Boolean" />
+          <Property Name="IsAdminPage" Type="Boolean" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="NameGuj" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ShowInMenu" Type="Boolean" />
+          <Property Name="ShowInMenu" Type="Boolean" Nullable="false" />
           <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SeqNo" Type="Int32" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
@@ -869,6 +1232,7 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="roleMenuMappings" Relationship="Self.FK_roleMenuMapping_menuMst" FromRole="menuMst" ToRole="roleMenuMapping" />
         </EntityType>
         <EntityType Name="RegistrationMst">
           <Key>
@@ -890,6 +1254,11 @@
           <Property Name="StateID" Type="Int32" />
           <Property Name="LanguageId" Type="Int32" />
           <Property Name="DocumentId" Type="Int32" />
+          <NavigationProperty Name="CandidateAttendances" Relationship="Self.FK_CandidateAttendance_RegistrationMst" FromRole="RegistrationMst" ToRole="CandidateAttendance" />
+          <NavigationProperty Name="CandidateDocs" Relationship="Self.FK_CandidateDoc_RegistrationMst" FromRole="RegistrationMst" ToRole="CandidateDoc" />
+          <NavigationProperty Name="CandidateJobMsts" Relationship="Self.FK_CandidateJobMst_RegistrationMst" FromRole="RegistrationMst" ToRole="CandidateJobMst" />
+          <NavigationProperty Name="CoursePaymentDetails" Relationship="Self.FK_CoursePaymentDetail_RegistrationMst" FromRole="RegistrationMst" ToRole="CoursePaymentDetail" />
+          <NavigationProperty Name="CourseRegistrationDetails" Relationship="Self.FK_CourseRegistrationDetail_RegistrationMst" FromRole="RegistrationMst" ToRole="CourseRegistrationDetail" />
         </EntityType>
         <EntityType Name="roleMenuMapping">
           <Key>
@@ -897,7 +1266,7 @@
           </Key>
           <Property Name="roleMenuMappingId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleID" Type="Int64" />
-          <Property Name="MenuId" Type="Int64" />
+          <Property Name="MenuId" Type="Int32" />
           <Property Name="AllowInsert" Type="Boolean" Nullable="false" />
           <Property Name="AllowUpdate" Type="Boolean" Nullable="false" />
           <Property Name="AllowDelete" Type="Boolean" Nullable="false" />
@@ -910,12 +1279,14 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="menuMst" Relationship="Self.FK_roleMenuMapping_menuMst" FromRole="roleMenuMapping" ToRole="menuMst" />
+          <NavigationProperty Name="roleMst" Relationship="Self.FK_roleMenuMapping_roleMst" FromRole="roleMenuMapping" ToRole="roleMst" />
         </EntityType>
         <EntityType Name="roleMst">
           <Key>
-            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="RoleId" />
           </Key>
-          <Property Name="RoleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="RoleType" Type="Int64" />
           <Property Name="RoleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
@@ -926,6 +1297,10 @@
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
           <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="roleMenuMappings" Relationship="Self.FK_roleMenuMapping_roleMst" FromRole="roleMst" ToRole="roleMenuMapping" />
+          <NavigationProperty Name="roleMst1" Relationship="Self.FK_roleMst_roleMst" FromRole="roleMst" ToRole="roleMst1" />
+          <NavigationProperty Name="roleMst2" Relationship="Self.FK_roleMst_roleMst" FromRole="roleMst1" ToRole="roleMst" />
+          <NavigationProperty Name="UserMsts" Relationship="Self.FK_UserMst_roleMst" FromRole="roleMst" ToRole="UserMst" />
         </EntityType>
         <EntityType Name="SiteConfig">
           <Key>
@@ -949,7 +1324,7 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DistrictMsts" Relationship="skillModel.FK_DistrictMst_StateMst" FromRole="StateMst" ToRole="DistrictMst" />
+          <NavigationProperty Name="DistrictMsts" Relationship="Self.FK_DistrictMst_StateMst" FromRole="StateMst" ToRole="DistrictMst" />
         </EntityType>
         <EntityType Name="templateMst">
           <Key>
@@ -987,6 +1362,7 @@
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CourseMsts" Relationship="Self.FK_CourseMst_TrainerMst" FromRole="TrainerMst" ToRole="CourseMst" />
         </EntityType>
         <EntityType Name="UserMst">
           <Key>
@@ -996,8 +1372,8 @@
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RoleId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="BranchId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Int64" />
+          <Property Name="BranchId" Type="Int32" />
           <Property Name="CreatedDate" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="ModifyDate" Type="DateTime" Precision="3" />
@@ -1006,6 +1382,8 @@
           <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BranchMst" Relationship="Self.FK_UserMst_BranchMst" FromRole="UserMst" ToRole="BranchMst" />
+          <NavigationProperty Name="roleMst" Relationship="Self.FK_UserMst_roleMst" FromRole="UserMst" ToRole="roleMst" />
         </EntityType>
         <EntityType Name="userRole">
           <Key>
@@ -1023,6 +1401,270 @@
           <Property Name="HostName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_BranchMst_CityMst">
+          <End Role="CityMst" Type="Self.CityMst" Multiplicity="0..1" />
+          <End Role="BranchMst" Type="Self.BranchMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CityMst">
+              <PropertyRef Name="CityId" />
+            </Principal>
+            <Dependent Role="BranchMst">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseMst_BranchMst">
+          <End Role="BranchMst" Type="Self.BranchMst" Multiplicity="0..1" />
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BranchMst">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="CourseMst">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMst_BranchMst">
+          <End Role="BranchMst" Type="Self.BranchMst" Multiplicity="0..1" />
+          <End Role="UserMst" Type="Self.UserMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BranchMst">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="UserMst">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateAttendance_CourseMst">
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="0..1" />
+          <End Role="CandidateAttendance" Type="Self.CandidateAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseMst">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CandidateAttendance">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateAttendance_RegistrationMst">
+          <End Role="RegistrationMst" Type="Self.RegistrationMst" Multiplicity="0..1" />
+          <End Role="CandidateAttendance" Type="Self.CandidateAttendance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationMst">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="CandidateAttendance">
+              <PropertyRef Name="RegistationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateDoc_DocumentMst">
+          <End Role="DocumentMst" Type="Self.DocumentMst" Multiplicity="0..1" />
+          <End Role="CandidateDoc" Type="Self.CandidateDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DocumentMst">
+              <PropertyRef Name="DocumentMstId" />
+            </Principal>
+            <Dependent Role="CandidateDoc">
+              <PropertyRef Name="DocumentMstId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateDoc_RegistrationMst">
+          <End Role="RegistrationMst" Type="Self.RegistrationMst" Multiplicity="0..1" />
+          <End Role="CandidateDoc" Type="Self.CandidateDoc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationMst">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="CandidateDoc">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateJobMst_CompnayMst">
+          <End Role="CompnayMst" Type="Self.CompnayMst" Multiplicity="0..1" />
+          <End Role="CandidateJobMst" Type="Self.CandidateJobMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CompnayMst">
+              <PropertyRef Name="CopmanyId" />
+            </Principal>
+            <Dependent Role="CandidateJobMst">
+              <PropertyRef Name="CompanyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateJobMst_RegistrationMst">
+          <End Role="RegistrationMst" Type="Self.RegistrationMst" Multiplicity="0..1" />
+          <End Role="CandidateJobMst" Type="Self.CandidateJobMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationMst">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="CandidateJobMst">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CandidateLanguage_LanguageMst">
+          <End Role="LanguageMst" Type="Self.LanguageMst" Multiplicity="0..1" />
+          <End Role="CandidateLanguage" Type="Self.CandidateLanguage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LanguageMst">
+              <PropertyRef Name="LanguageMstId" />
+            </Principal>
+            <Dependent Role="CandidateLanguage">
+              <PropertyRef Name="LanguageMstId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseMst_CategoryMst">
+          <End Role="CategoryMst" Type="Self.CategoryMst" Multiplicity="0..1" />
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CategoryMst">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="CourseMst">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDocMapping_CourseDocMapping">
+          <End Role="CourseDocMapping" Type="Self.CourseDocMapping" Multiplicity="1" />
+          <End Role="CourseDocMapping1" Type="Self.CourseDocMapping" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CourseDocMapping">
+              <PropertyRef Name="CourseDocMappingId" />
+            </Principal>
+            <Dependent Role="CourseDocMapping1">
+              <PropertyRef Name="CourseDocMappingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseDocMapping_CourseMst">
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="0..1" />
+          <End Role="CourseDocMapping" Type="Self.CourseDocMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseMst">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseDocMapping">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseMst_TrainerMst">
+          <End Role="TrainerMst" Type="Self.TrainerMst" Multiplicity="0..1" />
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrainerMst">
+              <PropertyRef Name="TrainerId" />
+            </Principal>
+            <Dependent Role="CourseMst">
+              <PropertyRef Name="TrainerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseRegistrationDetail_CourseMst">
+          <End Role="CourseMst" Type="Self.CourseMst" Multiplicity="0..1" />
+          <End Role="CourseRegistrationDetail" Type="Self.CourseRegistrationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CourseMst">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="CourseRegistrationDetail">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoursePaymentDetail_RegistrationMst">
+          <End Role="RegistrationMst" Type="Self.RegistrationMst" Multiplicity="0..1" />
+          <End Role="CoursePaymentDetail" Type="Self.CoursePaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationMst">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="CoursePaymentDetail">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CourseRegistrationDetail_RegistrationMst">
+          <End Role="RegistrationMst" Type="Self.RegistrationMst" Multiplicity="0..1" />
+          <End Role="CourseRegistrationDetail" Type="Self.CourseRegistrationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RegistrationMst">
+              <PropertyRef Name="RegistrationId" />
+            </Principal>
+            <Dependent Role="CourseRegistrationDetail">
+              <PropertyRef Name="RegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistrictMst_StateMst">
+          <End Role="StateMst" Type="Self.StateMst" Multiplicity="0..1" />
+          <End Role="DistrictMst" Type="Self.DistrictMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateMst">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="DistrictMst">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roleMenuMapping_menuMst">
+          <End Role="menuMst" Type="Self.menuMst" Multiplicity="0..1" />
+          <End Role="roleMenuMapping" Type="Self.roleMenuMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="menuMst">
+              <PropertyRef Name="MenuID" />
+            </Principal>
+            <Dependent Role="roleMenuMapping">
+              <PropertyRef Name="MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roleMenuMapping_roleMst">
+          <End Role="roleMst" Type="Self.roleMst" Multiplicity="0..1" />
+          <End Role="roleMenuMapping" Type="Self.roleMenuMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roleMst">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="roleMenuMapping">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_roleMst_roleMst">
+          <End Role="roleMst" Type="Self.roleMst" Multiplicity="1" />
+          <End Role="roleMst1" Type="Self.roleMst" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="roleMst">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="roleMst1">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserMst_roleMst">
+          <End Role="roleMst" Type="Self.roleMst" Multiplicity="0..1" />
+          <End Role="UserMst" Type="Self.UserMst" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roleMst">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserMst">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="skillEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AppConfigs" EntityType="Self.AppConfig" />
           <EntitySet Name="BranchMsts" EntityType="Self.BranchMst" />
@@ -1052,23 +1694,95 @@
           <EntitySet Name="TrainerMsts" EntityType="Self.TrainerMst" />
           <EntitySet Name="UserMsts" EntityType="Self.UserMst" />
           <EntitySet Name="userRoles" EntityType="Self.userRole" />
-          <AssociationSet Name="FK_DistrictMst_StateMst" Association="skillModel.FK_DistrictMst_StateMst">
+          <AssociationSet Name="FK_BranchMst_CityMst" Association="Self.FK_BranchMst_CityMst">
+            <End Role="CityMst" EntitySet="CityMsts" />
+            <End Role="BranchMst" EntitySet="BranchMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseMst_BranchMst" Association="Self.FK_CourseMst_BranchMst">
+            <End Role="BranchMst" EntitySet="BranchMsts" />
+            <End Role="CourseMst" EntitySet="CourseMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMst_BranchMst" Association="Self.FK_UserMst_BranchMst">
+            <End Role="BranchMst" EntitySet="BranchMsts" />
+            <End Role="UserMst" EntitySet="UserMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateAttendance_CourseMst" Association="Self.FK_CandidateAttendance_CourseMst">
+            <End Role="CourseMst" EntitySet="CourseMsts" />
+            <End Role="CandidateAttendance" EntitySet="CandidateAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateAttendance_RegistrationMst" Association="Self.FK_CandidateAttendance_RegistrationMst">
+            <End Role="RegistrationMst" EntitySet="RegistrationMsts" />
+            <End Role="CandidateAttendance" EntitySet="CandidateAttendances" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateDoc_DocumentMst" Association="Self.FK_CandidateDoc_DocumentMst">
+            <End Role="DocumentMst" EntitySet="DocumentMsts" />
+            <End Role="CandidateDoc" EntitySet="CandidateDocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateDoc_RegistrationMst" Association="Self.FK_CandidateDoc_RegistrationMst">
+            <End Role="RegistrationMst" EntitySet="RegistrationMsts" />
+            <End Role="CandidateDoc" EntitySet="CandidateDocs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateJobMst_CompnayMst" Association="Self.FK_CandidateJobMst_CompnayMst">
+            <End Role="CompnayMst" EntitySet="CompnayMsts" />
+            <End Role="CandidateJobMst" EntitySet="CandidateJobMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateJobMst_RegistrationMst" Association="Self.FK_CandidateJobMst_RegistrationMst">
+            <End Role="RegistrationMst" EntitySet="RegistrationMsts" />
+            <End Role="CandidateJobMst" EntitySet="CandidateJobMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CandidateLanguage_LanguageMst" Association="Self.FK_CandidateLanguage_LanguageMst">
+            <End Role="LanguageMst" EntitySet="LanguageMsts" />
+            <End Role="CandidateLanguage" EntitySet="CandidateLanguages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseMst_CategoryMst" Association="Self.FK_CourseMst_CategoryMst">
+            <End Role="CategoryMst" EntitySet="CategoryMsts" />
+            <End Role="CourseMst" EntitySet="CourseMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDocMapping_CourseDocMapping" Association="Self.FK_CourseDocMapping_CourseDocMapping">
+            <End Role="CourseDocMapping" EntitySet="CourseDocMappings" />
+            <End Role="CourseDocMapping1" EntitySet="CourseDocMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseDocMapping_CourseMst" Association="Self.FK_CourseDocMapping_CourseMst">
+            <End Role="CourseMst" EntitySet="CourseMsts" />
+            <End Role="CourseDocMapping" EntitySet="CourseDocMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseMst_TrainerMst" Association="Self.FK_CourseMst_TrainerMst">
+            <End Role="TrainerMst" EntitySet="TrainerMsts" />
+            <End Role="CourseMst" EntitySet="CourseMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseRegistrationDetail_CourseMst" Association="Self.FK_CourseRegistrationDetail_CourseMst">
+            <End Role="CourseMst" EntitySet="CourseMsts" />
+            <End Role="CourseRegistrationDetail" EntitySet="CourseRegistrationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoursePaymentDetail_RegistrationMst" Association="Self.FK_CoursePaymentDetail_RegistrationMst">
+            <End Role="RegistrationMst" EntitySet="RegistrationMsts" />
+            <End Role="CoursePaymentDetail" EntitySet="CoursePaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CourseRegistrationDetail_RegistrationMst" Association="Self.FK_CourseRegistrationDetail_RegistrationMst">
+            <End Role="RegistrationMst" EntitySet="RegistrationMsts" />
+            <End Role="CourseRegistrationDetail" EntitySet="CourseRegistrationDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistrictMst_StateMst" Association="Self.FK_DistrictMst_StateMst">
             <End Role="StateMst" EntitySet="StateMsts" />
             <End Role="DistrictMst" EntitySet="DistrictMsts" />
           </AssociationSet>
+          <AssociationSet Name="FK_roleMenuMapping_menuMst" Association="Self.FK_roleMenuMapping_menuMst">
+            <End Role="menuMst" EntitySet="menuMsts" />
+            <End Role="roleMenuMapping" EntitySet="roleMenuMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roleMenuMapping_roleMst" Association="Self.FK_roleMenuMapping_roleMst">
+            <End Role="roleMst" EntitySet="roleMsts" />
+            <End Role="roleMenuMapping" EntitySet="roleMenuMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_roleMst_roleMst" Association="Self.FK_roleMst_roleMst">
+            <End Role="roleMst" EntitySet="roleMsts" />
+            <End Role="roleMst1" EntitySet="roleMsts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserMst_roleMst" Association="Self.FK_UserMst_roleMst">
+            <End Role="roleMst" EntitySet="roleMsts" />
+            <End Role="UserMst" EntitySet="UserMsts" />
+          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_DistrictMst_StateMst">
-          <End Type="skillModel.StateMst" Role="StateMst" Multiplicity="0..1" />
-          <End Type="skillModel.DistrictMst" Role="DistrictMst" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StateMst">
-              <PropertyRef Name="StateId" />
-            </Principal>
-            <Dependent Role="DistrictMst">
-              <PropertyRef Name="StateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1471,7 +2185,7 @@
           <EntitySetMapping Name="roleMsts">
             <EntityTypeMapping TypeName="skillModel.roleMst">
               <MappingFragment StoreEntitySet="roleMst">
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="RoleType" ColumnName="RoleType" />
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />

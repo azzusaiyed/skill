@@ -14,6 +14,12 @@ namespace skill.Models
     
     public partial class DocumentMst
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public DocumentMst()
+        {
+            this.CandidateDocs = new HashSet<CandidateDoc>();
+        }
+    
         public int DocumentMstId { get; set; }
         public string DocName { get; set; }
         public string DocTitle { get; set; }
@@ -25,5 +31,8 @@ namespace skill.Models
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
         public string Host { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateDoc> CandidateDocs { get; set; }
     }
 }

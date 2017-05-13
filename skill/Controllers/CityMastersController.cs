@@ -17,6 +17,11 @@ namespace skill.Controllers
         // GET: CityMasters
         public ActionResult Index()
         {
+            //var query = (from city in db.CityMsts
+            //                                           join district in db.DistrictMsts on city.DistrictId equals district.DistrictId into members
+            //                                           select  );
+
+            var allProducts = db.CityMsts.Include(d => d.DistrictId).ToList();
             return View(db.CityMsts.ToList());
         }
 
@@ -39,8 +44,8 @@ namespace skill.Controllers
         public ActionResult Create()
         {
             var districtMsts = from doc in db.DistrictMsts
-                            orderby doc.DistrictName, doc.DistrictId
-                            select new SelectListItem { Value = doc.DistrictId.ToString(), Text = doc.DistrictName };
+                               orderby doc.DistrictName, doc.DistrictId
+                               select new SelectListItem { Value = doc.DistrictId.ToString(), Text = doc.DistrictName };
             ViewBag.DistrictId = districtMsts;
 
             return View();

@@ -16,7 +16,7 @@ namespace skill.Models
     {
         public long roleMenuMappingId { get; set; }
         public Nullable<long> RoleID { get; set; }
-        public Nullable<long> MenuId { get; set; }
+        public Nullable<int> MenuId { get; set; }
         public bool AllowInsert { get; set; }
         public bool AllowUpdate { get; set; }
         public bool AllowDelete { get; set; }
@@ -29,5 +29,8 @@ namespace skill.Models
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string HostName { get; set; }
         public string IpAddress { get; set; }
+    
+        public virtual menuMst menuMst { get; set; }
+        public virtual roleMst roleMst { get; set; }
     }
 }

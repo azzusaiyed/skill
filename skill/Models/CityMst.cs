@@ -14,6 +14,12 @@ namespace skill.Models
     
     public partial class CityMst
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CityMst()
+        {
+            this.BranchMsts = new HashSet<BranchMst>();
+        }
+    
         public int CityId { get; set; }
         public Nullable<int> DistrictId { get; set; }
         public string CityName { get; set; }
@@ -26,5 +32,8 @@ namespace skill.Models
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
         public string Host { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BranchMst> BranchMsts { get; set; }
     }
 }

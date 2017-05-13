@@ -14,6 +14,16 @@ namespace skill.Models
     
     public partial class RegistrationMst
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public RegistrationMst()
+        {
+            this.CandidateAttendances = new HashSet<CandidateAttendance>();
+            this.CandidateDocs = new HashSet<CandidateDoc>();
+            this.CandidateJobMsts = new HashSet<CandidateJobMst>();
+            this.CoursePaymentDetails = new HashSet<CoursePaymentDetail>();
+            this.CourseRegistrationDetails = new HashSet<CourseRegistrationDetail>();
+        }
+    
         public int RegistrationId { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
@@ -30,5 +40,16 @@ namespace skill.Models
         public Nullable<int> StateID { get; set; }
         public Nullable<int> LanguageId { get; set; }
         public Nullable<int> DocumentId { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateAttendance> CandidateAttendances { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateDoc> CandidateDocs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateJobMst> CandidateJobMsts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CoursePaymentDetail> CoursePaymentDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseRegistrationDetail> CourseRegistrationDetails { get; set; }
     }
 }

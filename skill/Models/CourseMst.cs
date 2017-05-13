@@ -14,6 +14,14 @@ namespace skill.Models
     
     public partial class CourseMst
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CourseMst()
+        {
+            this.CandidateAttendances = new HashSet<CandidateAttendance>();
+            this.CourseDocMappings = new HashSet<CourseDocMapping>();
+            this.CourseRegistrationDetails = new HashSet<CourseRegistrationDetail>();
+        }
+    
         public int CourseId { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public Nullable<int> TrainerId { get; set; }
@@ -45,5 +53,15 @@ namespace skill.Models
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
+    
+        public virtual BranchMst BranchMst { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateAttendance> CandidateAttendances { get; set; }
+        public virtual CategoryMst CategoryMst { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseDocMapping> CourseDocMappings { get; set; }
+        public virtual TrainerMst TrainerMst { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseRegistrationDetail> CourseRegistrationDetails { get; set; }
     }
 }

@@ -27,5 +27,8 @@ namespace skill.Models
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
         public string Host { get; set; }
+    
+        public virtual CourseMst CourseMst { get; set; }
+        public virtual RegistrationMst RegistrationMst { get; set; }
     }
 }

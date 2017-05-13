@@ -26,5 +26,9 @@ namespace skill.Models
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
+    
+        public virtual CourseDocMapping CourseDocMapping1 { get; set; }
+        public virtual CourseDocMapping CourseDocMapping2 { get; set; }
+        public virtual CourseMst CourseMst { get; set; }
     }
 }

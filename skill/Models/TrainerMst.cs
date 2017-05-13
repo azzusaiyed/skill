@@ -14,6 +14,12 @@ namespace skill.Models
     
     public partial class TrainerMst
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TrainerMst()
+        {
+            this.CourseMsts = new HashSet<CourseMst>();
+        }
+    
         public int TrainerId { get; set; }
         public string Name { get; set; }
         public string EmailId { get; set; }
@@ -30,5 +36,8 @@ namespace skill.Models
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseMst> CourseMsts { get; set; }
     }
 }

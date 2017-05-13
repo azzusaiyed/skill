@@ -14,7 +14,14 @@ namespace skill.Models
     
     public partial class roleMst
     {
-        public long RoleID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public roleMst()
+        {
+            this.roleMenuMappings = new HashSet<roleMenuMapping>();
+            this.UserMsts = new HashSet<UserMst>();
+        }
+    
+        public long RoleId { get; set; }
         public Nullable<long> RoleType { get; set; }
         public string RoleName { get; set; }
         public bool IsActive { get; set; }
@@ -25,5 +32,12 @@ namespace skill.Models
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string HostName { get; set; }
         public string IpAddress { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<roleMenuMapping> roleMenuMappings { get; set; }
+        public virtual roleMst roleMst1 { get; set; }
+        public virtual roleMst roleMst2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserMst> UserMsts { get; set; }
     }
 }

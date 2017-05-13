@@ -18,8 +18,8 @@ namespace skill.Models
         public string UserName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string RoleId { get; set; }
-        public string BranchId { get; set; }
+        public Nullable<long> RoleId { get; set; }
+        public Nullable<int> BranchId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifyDate { get; set; }
@@ -28,5 +28,8 @@ namespace skill.Models
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
         public string Host { get; set; }
+    
+        public virtual BranchMst BranchMst { get; set; }
+        public virtual roleMst roleMst { get; set; }
     }
 }

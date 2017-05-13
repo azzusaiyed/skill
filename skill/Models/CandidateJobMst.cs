@@ -17,7 +17,7 @@ namespace skill.Models
         public int CandidateJobId { get; set; }
         public Nullable<int> RegistrationId { get; set; }
         public Nullable<int> CompanyId { get; set; }
-        public Nullable<bool> IsCertificateIssued { get; set; }
+        public bool IsCertificateIssued { get; set; }
         public Nullable<System.DateTime> IssueDate { get; set; }
         public string FileName { get; set; }
         public string OfferLetter { get; set; }
@@ -27,5 +27,8 @@ namespace skill.Models
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
+    
+        public virtual CompnayMst CompnayMst { get; set; }
+        public virtual RegistrationMst RegistrationMst { get; set; }
     }
 }

@@ -14,6 +14,12 @@ namespace skill.Models
     
     public partial class CompnayMst
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CompnayMst()
+        {
+            this.CandidateJobMsts = new HashSet<CandidateJobMst>();
+        }
+    
         public int CopmanyId { get; set; }
         public string CompanyName { get; set; }
         public string CompanyAbb { get; set; }
@@ -27,5 +33,8 @@ namespace skill.Models
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
         public string Host { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CandidateJobMst> CandidateJobMsts { get; set; }
     }
 }

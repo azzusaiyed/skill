@@ -42,8 +42,8 @@ namespace skill.Controllers
                                orderby doc.UserName, doc.UserId
                                select new SelectListItem { Value= doc.UserId.ToString(), Text= doc.UserName };
             var roleMsts = from doc in db.roleMsts
-                           orderby doc.RoleName, doc.RoleID
-                           select new SelectListItem { Value = doc.RoleID.ToString(), Text = doc.RoleName };
+                           orderby doc.RoleName, doc.RoleId
+                           select new SelectListItem { Value = doc.RoleId.ToString(), Text = doc.RoleName };
             ViewBag.UserId = userMsts;
             ViewBag.RoleID = roleMsts;
             return View();

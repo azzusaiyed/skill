@@ -11,11 +11,20 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class BranchMst
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public BranchMst()
+        {
+            this.CourseMsts = new HashSet<CourseMst>();
+            this.UserMsts = new HashSet<UserMst>();
+        }
+    
         public int BranchId { get; set; }
         public Nullable<int> CityId { get; set; }
+        [Required]
         public string BranchName { get; set; }
         public string BranchAddress { get; set; }
         public string EmailId { get; set; }
@@ -28,5 +37,11 @@ namespace skill.Models
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
         public string Host { get; set; }
+    
+        public virtual CityMst CityMst { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CourseMst> CourseMsts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserMst> UserMsts { get; set; }
     }
 }

@@ -194,12 +194,17 @@
     <Compile Include="Controllers\UserMastersController.cs" />
     <Compile Include="Controllers\UserMstrsController.cs" />
     <Compile Include="Controllers\userRolesController.cs" />
-    <Compile Include="Models\AppConfig.cs">
-      <DependentUpon>SkillModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AppConfig.cs">
+      <DependentUpon>SkillModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\BranchMst.cs">
       <DependentUpon>SkillModel.tt</DependentUpon>
     </Compile>
@@ -227,7 +232,6 @@
     <Compile Include="Models\Contactu.cs">
       <DependentUpon>SkillModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Models\CourseDocMapping.cs">
       <DependentUpon>SkillModel.tt</DependentUpon>
     </Compile>
@@ -249,17 +253,12 @@
     <Compile Include="Models\Error.cs">
       <DependentUpon>SkillModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Models\LanguageMst.cs">
       <DependentUpon>SkillModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\menuMst.cs">
       <DependentUpon>SkillModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RegistrationMst.cs">
       <DependentUpon>SkillModel.tt</DependentUpon>
     </Compile>
@@ -302,6 +301,7 @@
     <Compile Include="Models\userRole.cs">
       <DependentUpon>SkillModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -311,8 +311,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\SkillModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SkillModel.edmx</DependentUpon>
+      <LastGenOutput>SkillModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SkillModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SkillModel.edmx</DependentUpon>
+      <LastGenOutput>SkillModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\SkillModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SkillModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SkillModel.edmx.diagram">
+      <DependentUpon>SkillModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -325,16 +342,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Models\SkillModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SkillModel.edmx</DependentUpon>
-      <LastGenOutput>SkillModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\SkillModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>SkillModel.edmx</DependentUpon>
-      <LastGenOutput>SkillModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -348,13 +355,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <EntityDeploy Include="Models\SkillModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SkillModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\SkillModel.edmx.diagram">
-      <DependentUpon>SkillModel.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\AppConfigs\Create.cshtml" />
     <Content Include="Views\AppConfigs\Delete.cshtml" />
     <Content Include="Views\AppConfigs\Details.cshtml" />

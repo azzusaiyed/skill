@@ -4,36 +4,57 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4969371da9274197902e96edcf2771e1" Name="Diagram1">
-        <EntityTypeShape EntityType="skillModel.AppConfig" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.BranchMst" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.CandidateAttendance" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.CandidateDoc" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.CandidateJobMst" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.CandidateLanguage" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.CategoryMst" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.CityMst" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.CompnayMst" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.Contactu" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.CourseDocMapping" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.CourseMst" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.CoursePaymentDetail" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.CourseRegistrationDetail" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.DistrictMst" Width="1.5" PointX="10.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.DocumentMst" Width="1.5" PointX="6.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.Error" Width="1.5" PointX="8.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.LanguageMst" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.menuMst" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.RegistrationMst" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.roleMenuMapping" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.roleMst" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.SiteConfig" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.StateMst" Width="1.5" PointX="6.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.templateMst" Width="1.5" PointX="14.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.TrainerMst" Width="1.5" PointX="8.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.UserMst" Width="1.5" PointX="14.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="skillModel.userRole" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
-        <AssociationConnector Association="skillModel.FK_DistrictMst_StateMst" />
+      <Diagram DiagramId="c549e0d96bcc47cc9ebc2334c2974619" Name="Diagram1">
+        <EntityTypeShape EntityType="skillModel.AppConfig" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.BranchMst" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.CandidateAttendance" Width="1.5" PointX="10.5" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.CandidateDoc" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.CandidateJobMst" Width="1.5" PointX="12.5" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.CandidateLanguage" Width="1.5" PointX="17" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.CategoryMst" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.CityMst" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.CompnayMst" Width="1.5" PointX="10.25" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.Contactu" Width="1.5" PointX="15.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.CourseDocMapping" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.CourseMst" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.CoursePaymentDetail" Width="1.5" PointX="7.5" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.CourseRegistrationDetail" Width="1.5" PointX="7.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.DistrictMst" Width="1.5" PointX="15" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.DocumentMst" Width="1.5" PointX="5.25" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.Error" Width="1.5" PointX="15.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.LanguageMst" Width="1.5" PointX="14.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.menuMst" Width="1.5" PointX="9.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.RegistrationMst" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.roleMenuMapping" Width="1.5" PointX="13" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.roleMst" Width="1.5" PointX="6" PointY="22.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.SiteConfig" Width="1.5" PointX="12.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.StateMst" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.templateMst" Width="1.5" PointX="17.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.TrainerMst" Width="1.5" PointX="3" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.UserMst" Width="1.5" PointX="8.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="skillModel.userRole" Width="1.5" PointX="17.75" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="skillModel.FK_BranchMst_CityMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CourseMst_BranchMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_UserMst_BranchMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CandidateAttendance_CourseMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CandidateAttendance_RegistrationMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CandidateDoc_DocumentMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CandidateDoc_RegistrationMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CandidateJobMst_CompnayMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CandidateJobMst_RegistrationMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CandidateLanguage_LanguageMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CourseMst_CategoryMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CourseDocMapping_CourseDocMapping" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CourseDocMapping_CourseMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CourseMst_TrainerMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CourseRegistrationDetail_CourseMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CoursePaymentDetail_RegistrationMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_CourseRegistrationDetail_RegistrationMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_DistrictMst_StateMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_roleMenuMapping_menuMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_roleMenuMapping_roleMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_roleMst_roleMst" ManuallyRouted="false" />
+        <AssociationConnector Association="skillModel.FK_UserMst_roleMst" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
