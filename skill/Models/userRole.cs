@@ -11,11 +11,14 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class userRole
     {
         public int userRoleMappingId { get; set; }
+        [Required]
         public Nullable<long> userId { get; set; }
+        [Required]
         public Nullable<int> RoleId { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }

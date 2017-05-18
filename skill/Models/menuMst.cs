@@ -11,7 +11,8 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class menuMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,8 +25,10 @@ namespace skill.Models
         public Nullable<int> ParentMenuID { get; set; }
         public Nullable<int> MenuType { get; set; }
         public bool IsAdminPage { get; set; }
+        [Required]
         public string Name { get; set; }
         public string NameGuj { get; set; }
+        [Required]
         public string URL { get; set; }
         public bool ShowInMenu { get; set; }
         public string Icon { get; set; }

@@ -11,10 +11,12 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class templateMst
     {
         public int TemplateId { get; set; }
+        [Required]
         public string Name { get; set; }
         public Nullable<int> ParentTemplateId { get; set; }
         public Nullable<int> DisplayOrder { get; set; }

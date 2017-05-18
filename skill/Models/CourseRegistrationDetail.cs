@@ -11,12 +11,16 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CourseRegistrationDetail
     {
         public int CourseRegistrationDetailId { get; set; }
+        [Required]
         public Nullable<int> CourseId { get; set; }
+        [Required]
         public Nullable<int> RegistrationId { get; set; }
+        [Required]
         public string Mode { get; set; }
         public string PaymentStatus { get; set; }
         public Nullable<decimal> TotalPaymentAmount { get; set; }

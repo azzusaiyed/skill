@@ -11,7 +11,8 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CategoryMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,9 @@ namespace skill.Models
         }
     
         public int CategoryId { get; set; }
+        [Required]
         public string CategoryName { get; set; }
+        [Required]
         public string CategoryAbb { get; set; }
         public string SeqNo { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }

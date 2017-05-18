@@ -11,11 +11,14 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CandidateLanguage
     {
         public int CadidateLanguageId { get; set; }
+        [Required]
         public Nullable<int> RegistrationId { get; set; }
+        [Required]
         public Nullable<int> LanguageMstId { get; set; }
     
         public virtual LanguageMst LanguageMst { get; set; }

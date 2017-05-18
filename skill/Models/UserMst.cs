@@ -11,14 +11,20 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class UserMst
     {
         public long UserId { get; set; }
+        [Required]
         public string UserName { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
+        [Required]
         public Nullable<long> RoleId { get; set; }
+        [Required]
         public Nullable<int> BranchId { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedBy { get; set; }

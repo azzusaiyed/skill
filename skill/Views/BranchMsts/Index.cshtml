@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Branch Master</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CityId)
+            @Html.DisplayNameFor(model => model.CityMst.CityName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.BranchName)
@@ -28,28 +28,10 @@
             @Html.DisplayNameFor(model => model.MobileNo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifyDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifyBy)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IpAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Host)
         </th>
         <th></th>
     </tr>
@@ -57,7 +39,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CityId)
+            @Html.DisplayFor(modelItem => item.CityMst.CityName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.BranchName)
@@ -72,28 +54,10 @@
             @Html.DisplayFor(modelItem => item.MobileNo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifyDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifyBy)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.IsActive)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IpAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Host)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.BranchId }) |

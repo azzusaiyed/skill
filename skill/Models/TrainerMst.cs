@@ -11,7 +11,8 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TrainerMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,15 @@ namespace skill.Models
         }
     
         public int TrainerId { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string EmailId { get; set; }
+        [Required]
         public string MobileNo { get; set; }
+        [Required]
         public string Qualification { get; set; }
+        [Required]
         public string ShortDetail { get; set; }
         public string Details { get; set; }
         public string Photo { get; set; }

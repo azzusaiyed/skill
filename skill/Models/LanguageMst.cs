@@ -11,7 +11,8 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class LanguageMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace skill.Models
         }
     
         public int LanguageMstId { get; set; }
+        [Required]
         public string LanguageName { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<int> CreatedBy { get; set; }

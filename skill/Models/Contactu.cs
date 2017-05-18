@@ -11,14 +11,20 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Contactu
     {
         public int Contactusid { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public string ContactNo { get; set; }
+        [Required]
         public string Emailid { get; set; }
+        [Required]
         public string Subject { get; set; }
+        [Required]
         public string Details { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }

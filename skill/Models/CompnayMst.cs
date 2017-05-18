@@ -11,7 +11,8 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CompnayMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,10 +22,15 @@ namespace skill.Models
         }
     
         public int CopmanyId { get; set; }
+        [Required]
         public string CompanyName { get; set; }
+        [Required]
         public string CompanyAbb { get; set; }
+        [Required]
         public string Address { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string ContantNo { get; set; }
         public Nullable<long> CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifyDate { get; set; }

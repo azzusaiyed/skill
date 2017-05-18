@@ -17,11 +17,6 @@ namespace skill.Controllers
         // GET: CityMasters
         public ActionResult Index()
         {
-            //var query = (from city in db.CityMsts
-            //                                           join district in db.DistrictMsts on city.DistrictId equals district.DistrictId into members
-            //                                           select  );
-
-            var allProducts = db.CityMsts.Include(d => d.DistrictId).ToList();
             return View(db.CityMsts.ToList());
         }
 

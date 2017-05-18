@@ -23,18 +23,37 @@ namespace skill.Models
         }
     
         public int BranchId { get; set; }
+
+        [Required(ErrorMessage = "City Name field is required.")]
         public Nullable<int> CityId { get; set; }
+
         [Required]
+        [Display(Name ="Branch Name")]
         public string BranchName { get; set; }
+
+        [Required]
+        [Display(Name = "Branch Address")]
         public string BranchAddress { get; set; }
+
+        [Required]
+        [Display(Name = "Email")]
+        [EmailAddress(ErrorMessage = "Invalid Email")]
         public string EmailId { get; set; }
+
+        [Required]
+        [Display(Name = "Mobile")]
+        //[RegularExpression(@"^([0]|\+91[\-\s]?)?[789]\d{9}$", ErrorMessage = "Entered Mobile No is not valid.")]
+        [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage = "Please enter valid mobile no.")]
         public string MobileNo { get; set; }
+
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<long> CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifyDate { get; set; }
         public Nullable<long> ModifyBy { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
+
+        [Display(Name = "Ip Address")]
         public string IpAddress { get; set; }
         public string Host { get; set; }
     

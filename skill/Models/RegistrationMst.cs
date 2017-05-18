@@ -11,7 +11,8 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class RegistrationMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,18 +26,30 @@ namespace skill.Models
         }
     
         public int RegistrationId { get; set; }
+        [Required]
         public string UserName { get; set; }
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string Password { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string MiddleName { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public string MobileNumber { get; set; }
+        [Required]
         public Nullable<System.DateTime> DOB { get; set; }
+        [Required]
         public string Education { get; set; }
         public string Gender { get; set; }
+        [Required]
         public Nullable<int> Age { get; set; }
+        [Required]
         public Nullable<int> CityID { get; set; }
+        [Required]
         public Nullable<int> StateID { get; set; }
         public Nullable<int> LanguageId { get; set; }
         public Nullable<int> DocumentId { get; set; }

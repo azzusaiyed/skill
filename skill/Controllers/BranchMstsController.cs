@@ -38,6 +38,9 @@ namespace skill.Controllers
         // GET: BranchMsts/Create
         public ActionResult Create()
         {
+            ViewBag.CityId = new SelectList(db.CityMsts.Where(s => s.IsActive == true && s.IsDeleted == false), "CityId", "CityName", "--Select--");
+
+            //ViewBag.CityId = citMsts;
             return View();
         }
 
@@ -48,6 +51,14 @@ namespace skill.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "BranchId,CityId,BranchName,BranchAddress,EmailId,MobileNo,CreatedDate,CreatedBy,ModifyDate,ModifyBy,IsActive,IsDeleted,IpAddress,Host")] BranchMst branchMst)
         {
+            //[TODO]
+            branchMst.CreatedBy = 1;
+            branchMst.CreatedDate = DateTime.Now;
+            branchMst.ModifyBy = 1;
+            branchMst.ModifyDate = DateTime.Now;
+            branchMst.Host = "";
+            branchMst.IpAddress = "";
+
             if (ModelState.IsValid)
             {
                 db.BranchMsts.Add(branchMst);
@@ -70,6 +81,9 @@ namespace skill.Controllers
             {
                 return HttpNotFound();
             }
+            
+            ViewBag.CityId = new SelectList(db.CityMsts.Where(s=> s.IsActive == true && s.IsDeleted == false), "CityId", "CityName", branchMst.CityId);
+
             return View(branchMst);
         }
 

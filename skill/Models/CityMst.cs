@@ -11,7 +11,8 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CityMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,11 @@ namespace skill.Models
         }
     
         public int CityId { get; set; }
+        [Required]
         public Nullable<int> DistrictId { get; set; }
+        [Required]
         public string CityName { get; set; }
+        [Required]
         public string Pincode { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<long> CreatedBy { get; set; }

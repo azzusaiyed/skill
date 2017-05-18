@@ -11,10 +11,12 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Error
     {
         public int ErrorId { get; set; }
+        [Required]
         public string Message { get; set; }
         public string IpAddress { get; set; }
         public string Source { get; set; }

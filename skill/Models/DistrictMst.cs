@@ -11,11 +11,14 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DistrictMst
     {
         public int DistrictId { get; set; }
+        [Required]
         public Nullable<int> StateId { get; set; }
+        [Required]
         public string DistrictName { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<long> CreatedBy { get; set; }

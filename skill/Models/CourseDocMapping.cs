@@ -11,12 +11,16 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CourseDocMapping
     {
         public int CourseDocMappingId { get; set; }
+        [Required]
         public Nullable<int> CourseId { get; set; }
+        [Required]
         public string DocTitle { get; set; }
+        [Required]
         public string DocDetail { get; set; }
         public string FIleName { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }

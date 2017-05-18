@@ -11,11 +11,14 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CandidateAttendance
     {
         public int CandidateAttendanceId { get; set; }
+        [Required]
         public Nullable<int> CourseId { get; set; }
+        [Required]
         public Nullable<int> RegistationId { get; set; }
         public Nullable<System.DateTime> DateTimeIn { get; set; }
         public Nullable<System.DateTime> DateTimeOut { get; set; }
