@@ -17,7 +17,33 @@ namespace skill.Controllers
         // GET: CityMasters
         public ActionResult Index()
         {
-            return View(db.CityMsts.ToList());
+            return View(this.GetCityMasters(1));
+        }
+
+        [HttpPost]
+        public ActionResult Index(int currentPageIndex)
+        {
+            return View(this.GetCityMasters(currentPageIndex));
+        }
+
+        private CityMstsModel GetCityMasters(int currentPage)
+        {
+            int maxRows = 2;
+
+            CityMstsModel CityMasterModel = new CityMstsModel();
+
+            CityMasterModel.CityMst = (from CityMaster in db.CityMsts
+                                               select CityMaster)
+                        .OrderBy(CityMaster => CityMaster.CityId)
+                        .Skip((currentPage - 1) * maxRows)
+                        .Take(maxRows).ToList();
+
+            double pageCount = (double)((decimal)db.CityMsts.Count() / Convert.ToDecimal(maxRows));
+            CityMasterModel.PageCount = (int)Math.Ceiling(pageCount);
+
+            CityMasterModel.CurrentPageIndex = currentPage;
+
+            return CityMasterModel;
         }
 
         // GET: CityMasters/Details/5

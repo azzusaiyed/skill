@@ -26,6 +26,7 @@ namespace skill.Models
         public string CategoryName { get; set; }
         [Required]
         public string CategoryAbb { get; set; }
+        [RegularExpression("\\d", ErrorMessage = "Please enter valid Seq no.")]
         public string SeqNo { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<long> CreatedBy { get; set; }
@@ -38,5 +39,20 @@ namespace skill.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CourseMst> CourseMsts { get; set; }
+    }
+
+    public class CategoryMstsModel
+    {
+        public List<CategoryMst> CategoryMst { get; set; }
+
+        /// <summary>
+        /// Gets or sets CurrentPageIndex.
+        /// </summary>
+        public int CurrentPageIndex { get; set; }
+
+        /// <summary>
+        /// Gets or sets PageCount.
+        /// </summary>
+        public int PageCount { get; set; }
     }
 }

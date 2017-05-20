@@ -17,7 +17,33 @@ namespace skill.Controllers
         // GET: CategoryMasters
         public ActionResult Index()
         {
-            return View(db.CategoryMsts.ToList());
+            return View(this.GetCategoryMasters(1));
+        }
+
+        [HttpPost]
+        public ActionResult Index(int currentPageIndex)
+        {
+            return View(this.GetCategoryMasters(currentPageIndex));
+        }
+
+        private CategoryMstsModel GetCategoryMasters(int currentPage)
+        {
+            int maxRows = 2;
+
+            CategoryMstsModel CategoryMasterModel = new CategoryMstsModel();
+
+            CategoryMasterModel.CategoryMst = (from CategoryMaster in db.CategoryMsts
+                                           select CategoryMaster)
+                        .OrderBy(CategoryMaster => CategoryMaster.CategoryId)
+                        .Skip((currentPage - 1) * maxRows)
+                        .Take(maxRows).ToList();
+
+            double pageCount = (double)((decimal)db.CategoryMsts.Count() / Convert.ToDecimal(maxRows));
+            CategoryMasterModel.PageCount = (int)Math.Ceiling(pageCount);
+
+            CategoryMasterModel.CurrentPageIndex = currentPage;
+
+            return CategoryMasterModel;
         }
 
         // GET: CategoryMasters/Details/5
@@ -50,6 +76,14 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                categoryMst.CreatedBy = 1;
+                categoryMst.CreatedDate = DateTime.Now;
+                categoryMst.ModifyBy = 1;
+                categoryMst.ModifyDate = DateTime.Now;
+                categoryMst.Host = "";
+                categoryMst.IpAddress = "";
+
                 db.CategoryMsts.Add(categoryMst);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +116,10 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                categoryMst.ModifyBy = 1;
+                categoryMst.ModifyDate = DateTime.Now;
+
                 db.Entry(categoryMst).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

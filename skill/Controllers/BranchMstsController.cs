@@ -122,8 +122,10 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
                 branchMst.ModifyBy = 1;
                 branchMst.ModifyDate = DateTime.Now;
+
                 db.Entry(branchMst).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
