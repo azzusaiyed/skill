@@ -17,7 +17,33 @@ namespace skill.Controllers
         // GET: BranchMsts
         public ActionResult Index()
         {
-            return View(db.BranchMsts.ToList());
+            return View(this.GetBranchMasters(1));
+        }
+
+        [HttpPost]
+        public ActionResult Index(int currentPageIndex)
+        {
+            return View(this.GetBranchMasters(currentPageIndex));
+        }
+
+        private BranchMstsModel GetBranchMasters(int currentPage)
+        {
+            int maxRows = 10;
+
+            BranchMstsModel BranchMasterModel = new BranchMstsModel();
+
+            BranchMasterModel.BranchMst = (from branchMaster in db.BranchMsts
+                                           select branchMaster)
+                        .OrderBy(branchMaster => branchMaster.BranchId)
+                        .Skip((currentPage - 1) * maxRows)
+                        .Take(maxRows).ToList();
+
+            double pageCount = (double)((decimal)db.BranchMsts.Count() / Convert.ToDecimal(maxRows));
+            BranchMasterModel.PageCount = (int)Math.Ceiling(pageCount);
+
+            BranchMasterModel.CurrentPageIndex = currentPage;
+
+            return BranchMasterModel;
         }
 
         // GET: BranchMsts/Details/5
@@ -81,8 +107,8 @@ namespace skill.Controllers
             {
                 return HttpNotFound();
             }
-            
-            ViewBag.CityId = new SelectList(db.CityMsts.Where(s=> s.IsActive == true && s.IsDeleted == false), "CityId", "CityName", branchMst.CityId);
+
+            ViewBag.CityId = new SelectList(db.CityMsts.Where(s => s.IsActive == true && s.IsDeleted == false), "CityId", "CityName", branchMst.CityId);
 
             return View(branchMst);
         }
@@ -96,6 +122,8 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                branchMst.ModifyBy = 1;
+                branchMst.ModifyDate = DateTime.Now;
                 db.Entry(branchMst).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

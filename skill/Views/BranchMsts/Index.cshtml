@@ -1,4 +1,4 @@
-﻿@model IEnumerable<skill.Models.BranchMst>
+﻿@model skill.Models.BranchMstsModel
 
 @{
     ViewBag.Title = "Index";
@@ -10,33 +10,36 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CityMst.CityName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BranchName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BranchAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MobileNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
+@using (Html.BeginForm("Index", "BranchMsts", FormMethod.Post))
+{
+    <table class="table" id="tblgrid">
+        <tr>
+            <th>
+                City Name
+            </th>
+            <th>
+                Branch Name
+            </th>
+            <th>
+                BranchAddress
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+               Mobile No.
+            </th>
+            <th>
+                IsActive
+            </th>
+            <th>
+               IsDeleted
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model.BranchMst)
+    {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.CityMst.CityName)
@@ -60,11 +63,41 @@
             @Html.DisplayFor(modelItem => item.IsDeleted)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BranchId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BranchId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BranchId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.BranchId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.BranchId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.BranchId })
         </td>
     </tr>
-}
+    }
 
-</table>
+    </table>
+    <table class="pager-table" cellpadding="0" cellspacing="0">
+        <tr>
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                <td>
+                    @if (i != Model.CurrentPageIndex)
+                    {
+                        <a href="javascript:PagerClick(@i);">@i</a>
+                    }
+                    else
+                    {
+                        <span>@i</span>
+                    }
+                </td>
+            }
+        </tr>
+    </table>
+    <input type="hidden" id="hfCurrentPageIndex" name="currentPageIndex" />
+}
+<script type="text/javascript">
+    function PagerClick(index) {
+        document.getElementById("hfCurrentPageIndex").value = index;
+        document.forms[0].submit();
+    }
+</script>
+<style type="text/css">
+    .pager-table td{
+        padding:4px;
+    }
+</style>

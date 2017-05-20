@@ -63,4 +63,19 @@ namespace skill.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserMst> UserMsts { get; set; }
     }
+
+    public class BranchMstsModel
+    {
+        public List<BranchMst> BranchMst { get; set; }
+       
+        /// <summary>
+        /// Gets or sets CurrentPageIndex.
+        /// </summary>
+        public int CurrentPageIndex { get; set; }
+
+        /// <summary>
+        /// Gets or sets PageCount.
+        /// </summary>
+        public int PageCount { get; set; }
+    }
 }
