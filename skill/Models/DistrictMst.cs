@@ -30,5 +30,8 @@ namespace skill.Models
         public string Host { get; set; }
     
         public virtual StateMst StateMst { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CityMst> CityMst { get; set; }
     }
 }

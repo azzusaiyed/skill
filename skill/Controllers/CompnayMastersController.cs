@@ -17,7 +17,33 @@ namespace skill.Controllers
         // GET: CompnayMasters
         public ActionResult Index()
         {
-            return View(db.CompnayMsts.ToList());
+            return View(this.GetCompanyMasters(1));
+        }
+
+        [HttpPost]
+        public ActionResult Index(int currentPageIndex)
+        {
+            return View(this.GetCompanyMasters(currentPageIndex));
+        }
+
+        private CompnayMstModel GetCompanyMasters(int currentPage)
+        {
+            int maxRows = 2;
+
+            CompnayMstModel CompanyMasterModel = new CompnayMstModel();
+
+            CompanyMasterModel.CompnayMst = (from CompanyMaster in db.CompnayMsts
+                                             select CompanyMaster)
+                        .OrderBy(CompanyMaster => CompanyMaster.CopmanyId)
+                        .Skip((currentPage - 1) * maxRows)
+                        .Take(maxRows).ToList();
+
+            double pageCount = (double)((decimal)db.CompnayMsts.Count() / Convert.ToDecimal(maxRows));
+            CompanyMasterModel.PageCount = (int)Math.Ceiling(pageCount);
+
+            CompanyMasterModel.CurrentPageIndex = currentPage;
+
+            return CompanyMasterModel;
         }
 
         // GET: CompnayMasters/Details/5
@@ -50,6 +76,13 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                compnayMst.CreatedBy = 1;
+                compnayMst.ModifyBy = 1;
+                compnayMst.ModifyDate = DateTime.Now;
+                compnayMst.Host = "";
+                compnayMst.IpAddress = "";
+
                 db.CompnayMsts.Add(compnayMst);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +115,12 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                compnayMst.ModifyBy = 1;
+                compnayMst.ModifyDate = DateTime.Now;
+                compnayMst.Host = "";
+                compnayMst.IpAddress = "";
+
                 db.Entry(compnayMst).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

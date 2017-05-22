@@ -19,6 +19,7 @@ namespace skill.Models
         public CityMst()
         {
             this.BranchMsts = new HashSet<BranchMst>();
+           // this.DistrictMst = new DistrictMst();
         }
     
         public int CityId { get; set; }
@@ -36,7 +37,9 @@ namespace skill.Models
         public bool IsDeleted { get; set; }
         public string IpAddress { get; set; }
         public string Host { get; set; }
-    
+
+        public virtual DistrictMst DistrictMst { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BranchMst> BranchMsts { get; set; }
     }

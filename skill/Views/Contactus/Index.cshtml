@@ -1,4 +1,4 @@
-﻿@model IEnumerable<skill.Models.Contactu>
+﻿@model skill.Models.ContactUsModel
 
 @{
     ViewBag.Title = "Index";
@@ -10,51 +10,36 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ContactNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Emailid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Subject)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Details)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HostName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IpAddress)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
+@using (Html.BeginForm("Index", "Contactus", FormMethod.Post))
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactUs[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactUs[0].ContactNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactUs[0].Emailid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactUs[0].Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactUs[0].Details)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactUs[0].IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactUs[0].IsDeleted)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.ContactUs) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -78,24 +63,6 @@
             @Html.DisplayFor(modelItem => item.IsDeleted)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifiedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HostName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IpAddress)
-        </td>
-        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Contactusid }) |
             @Html.ActionLink("Details", "Details", new { id=item.Contactusid }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.Contactusid })
@@ -103,4 +70,34 @@
     </tr>
 }
 
-</table>
+    </table>
+    <table class="pager-table" cellpadding="0" cellspacing="0">
+        <tr>
+            @for (int i = 1; i <= Model.PageCount; i++)
+            {
+                <td>
+                    @if (i != Model.CurrentPageIndex)
+                    {
+                        <a href="javascript:PagerClick(@i);">@i</a>
+                    }
+                    else
+                    {
+                        <span>@i</span>
+                    }
+                </td>
+            }
+        </tr>
+    </table>
+    <input type="hidden" id="hfCurrentPageIndex" name="currentPageIndex" />
+}
+<script type="text/javascript">
+    function PagerClick(index) {
+        document.getElementById("hfCurrentPageIndex").value = index;
+        document.forms[0].submit();
+    }
+</script>
+<style type="text/css">
+    .pager-table td {
+        padding: 4px;
+    }
+</style>

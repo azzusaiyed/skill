@@ -1,4 +1,4 @@
-﻿@model IEnumerable<skill.Models.CompnayMst>
+﻿@model skill.Models.CompnayMstModel
 
 @{
     ViewBag.Title = "Index";
@@ -10,48 +10,36 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "CompnayMasters", FormMethod.Post))
+{
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CompanyName)
+            @Html.DisplayNameFor(model => model.CompnayMst[0].CompanyName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CompanyAbb)
+            @Html.DisplayNameFor(model => model.CompnayMst[0].CompanyAbb)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.CompnayMst[0].Address)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.CompnayMst[0].Email)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ContantNo)
+            @Html.DisplayNameFor(model => model.CompnayMst[0].ContantNo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedBy)
+            @Html.DisplayNameFor(model => model.CompnayMst[0].IsActive)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ModifyDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ModifyBy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsActive)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IpAddress)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Host)
+            @Html.DisplayNameFor(model => model.CompnayMst[0].IsDeleted)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.CompnayMst) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.CompanyName)
@@ -69,25 +57,10 @@
             @Html.DisplayFor(modelItem => item.ContantNo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifyDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ModifyBy)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.IsActive)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IpAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Host)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.CopmanyId }) |
@@ -98,3 +71,33 @@
 }
 
 </table>
+<table class="pager-table" cellpadding="0" cellspacing="0">
+    <tr>
+        @for (int i = 1; i <= Model.PageCount; i++)
+            {
+            <td>
+                @if (i != Model.CurrentPageIndex)
+                {
+                    <a href="javascript:PagerClick(@i);">@i</a>
+                }
+                else
+                {
+                    <span>@i</span>
+                }
+            </td>
+        }
+    </tr>
+</table>
+<input type="hidden" id="hfCurrentPageIndex" name="currentPageIndex" />
+}
+<script type="text/javascript">
+    function PagerClick(index) {
+        document.getElementById("hfCurrentPageIndex").value = index;
+        document.forms[0].submit();
+    }
+</script>
+<style type="text/css">
+    .pager-table td {
+        padding: 4px;
+    }
+</style>

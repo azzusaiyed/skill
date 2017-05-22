@@ -17,10 +17,15 @@ namespace skill.Models
     {
         public int Contactusid { get; set; }
         [Required]
+        [Display(Name = "Contact Name")]
         public string Name { get; set; }
         [Required]
+        [Display(Name = "Contact No.")]
+        [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage = "Please enter valid contact no.")]
         public string ContactNo { get; set; }
         [Required]
+        [Display(Name = "Email")]
+        [EmailAddress(ErrorMessage = "Invalid Email")]
         public string Emailid { get; set; }
         [Required]
         public string Subject { get; set; }
@@ -34,5 +39,20 @@ namespace skill.Models
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string HostName { get; set; }
         public string IpAddress { get; set; }
+    }
+
+    public class ContactUsModel
+    {
+        public List<Contactu> ContactUs { get; set; }
+
+        /// <summary>
+        /// Gets or sets CurrentPageIndex.
+        /// </summary>
+        public int CurrentPageIndex { get; set; }
+
+        /// <summary>
+        /// Gets or sets PageCount.
+        /// </summary>
+        public int PageCount { get; set; }
     }
 }

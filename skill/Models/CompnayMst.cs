@@ -23,14 +23,19 @@ namespace skill.Models
     
         public int CopmanyId { get; set; }
         [Required]
+        [Display(Name="Company Name")]
         public string CompanyName { get; set; }
+        [Display(Name = "Company ABB")]
         [Required]
         public string CompanyAbb { get; set; }
         [Required]
         public string Address { get; set; }
         [Required]
+        [EmailAddress(ErrorMessage = "Invalid Email")]
         public string Email { get; set; }
         [Required]
+        [Display(Name = "Contact No.")]
+        [RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage = "Please enter valid contact no.")]
         public string ContantNo { get; set; }
         public Nullable<long> CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifyDate { get; set; }
@@ -42,5 +47,20 @@ namespace skill.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CandidateJobMst> CandidateJobMsts { get; set; }
+    }
+
+    public class CompnayMstModel
+    {
+        public List<CompnayMst> CompnayMst { get; set; }
+
+        /// <summary>
+        /// Gets or sets CurrentPageIndex.
+        /// </summary>
+        public int CurrentPageIndex { get; set; }
+
+        /// <summary>
+        /// Gets or sets PageCount.
+        /// </summary>
+        public int PageCount { get; set; }
     }
 }

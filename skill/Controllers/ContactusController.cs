@@ -17,7 +17,33 @@ namespace skill.Controllers
         // GET: Contactus
         public ActionResult Index()
         {
-            return View(db.Contactus.ToList());
+            return View(this.GetContactUs(1));
+        }
+
+        [HttpPost]
+        public ActionResult Index(int currentPageIndex)
+        {
+            return View(this.GetContactUs(currentPageIndex));
+        }
+
+        private ContactUsModel GetContactUs(int currentPage)
+        {
+            int maxRows = 2;
+
+            ContactUsModel ContactUsModel = new ContactUsModel();
+
+            ContactUsModel.ContactUs = (from ContactUs in db.Contactus
+                                             select ContactUs)
+                        .OrderBy(Contactus => Contactus.Contactusid)
+                        .Skip((currentPage - 1) * maxRows)
+                        .Take(maxRows).ToList();
+
+            double pageCount = (double)((decimal)db.Contactus.Count() / Convert.ToDecimal(maxRows));
+            ContactUsModel.PageCount = (int)Math.Ceiling(pageCount);
+
+            ContactUsModel.CurrentPageIndex = currentPage;
+
+            return ContactUsModel;
         }
 
         // GET: Contactus/Details/5
@@ -50,6 +76,14 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                contactu.CreatedBy = 1;
+                contactu.CreatedDate = DateTime.Now;
+                contactu.ModifiedBy = 1;
+                contactu.ModifiedDate = DateTime.Now;
+                contactu.HostName = "";
+                contactu.IpAddress = "";
+
                 db.Contactus.Add(contactu);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +116,12 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                contactu.ModifiedBy = 1;
+                contactu.ModifiedDate = DateTime.Now;
+                contactu.HostName = "";
+                contactu.IpAddress = "";
+
                 db.Entry(contactu).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

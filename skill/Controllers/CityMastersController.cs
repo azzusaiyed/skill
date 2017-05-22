@@ -81,6 +81,14 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                cityMst.CreatedBy = 1;
+                cityMst.CreatedDate = DateTime.Now;
+                cityMst.ModifyBy = 1;
+                cityMst.ModifyDate = DateTime.Now;
+                cityMst.Host = "";
+                cityMst.IpAddress = "";
+
                 db.CityMsts.Add(cityMst);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -101,6 +109,10 @@ namespace skill.Controllers
             {
                 return HttpNotFound();
             }
+    
+            ViewBag.DistrictId = new SelectList(db.DistrictMsts.Where(s => s.IsActive == true && s.IsDeleted == false), "DistrictId", "DistrictName", cityMst.DistrictId);
+
+
             return View(cityMst);
         }
 
@@ -113,6 +125,11 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                cityMst.ModifyBy = 1;
+                cityMst.ModifyDate = DateTime.Now;
+                cityMst.Host = "";
+                cityMst.IpAddress = "";
                 db.Entry(cityMst).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
