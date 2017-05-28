@@ -11,12 +11,18 @@ namespace skill.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class AppConfig
     {
         public int AppConfigId { get; set; }
+
+        [Required]
         public string Appkey { get; set; }
+
+        [Required]
         public string AppValue { get; set; }
+
         public string Remarks { get; set; }
     }
 }
