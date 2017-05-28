@@ -38,6 +38,12 @@ namespace skill.Controllers
         // GET: CourseMasters/Create
         public ActionResult Create()
         {
+            ViewBag.CategoryId = new SelectList(db.CategoryMsts.Where(s => s.IsActive == true && s.IsDeleted == false), "CategoryId", "CategoryName", "--Select--");
+            ViewBag.TrainerId = new SelectList(db.TrainerMsts.Where(s => s.IsActive == true && s.IsDeleted == false), "TrainerId", "Name", "--Select--");
+            ViewBag.BranchId = new SelectList(db.BranchMsts.Where(s => s.IsActive == true && s.IsDeleted == false), "BranchId", "BranchName", "--Select--");
+            ViewBag.CourseDocId = new SelectList(db.CourseDocMappings.Where(s => s.IsActive == true && s.IsDeleted == false), "CourseDocMappingId", "DocTitle", "--Select--");
+
+
             return View();
         }
 
@@ -50,6 +56,13 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                courseMst.CreatedBy = 1;
+                courseMst.CreatedDate = DateTime.Now;
+                courseMst.ModifyBy = 1;
+                courseMst.ModifyDate = DateTime.Now;
+                courseMst.IpAddress = "";
+
                 db.CourseMsts.Add(courseMst);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,6 +83,11 @@ namespace skill.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoryId = new SelectList(db.CategoryMsts.Where(s => s.IsActive == true && s.IsDeleted == false), "CategoryId", "CategoryName", "--Select--");
+            ViewBag.TrainerId = new SelectList(db.TrainerMsts.Where(s => s.IsActive == true && s.IsDeleted == false), "TrainerId", "Name", "--Select--");
+            ViewBag.BranchId = new SelectList(db.BranchMsts.Where(s => s.IsActive == true && s.IsDeleted == false), "BranchId", "BranchName", "--Select--");
+            ViewBag.CourseDocId = new SelectList(db.CourseDocMappings.Where(s => s.IsActive == true && s.IsDeleted == false), "CourseDocMappingId", "DocTitle", "--Select--");
+
             return View(courseMst);
         }
 
@@ -82,6 +100,13 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                courseMst.CreatedBy = 1;
+                courseMst.CreatedDate = DateTime.Now;
+                courseMst.ModifyBy = 1;
+                courseMst.ModifyDate = DateTime.Now;
+                courseMst.IpAddress = "";
+
                 db.Entry(courseMst).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

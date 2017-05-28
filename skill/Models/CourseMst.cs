@@ -25,32 +25,64 @@ namespace skill.Models
     
         public int CourseId { get; set; }
         [Required]
-        public Nullable<int> CategoryId { get; set; }
+        [Display(Name ="Category")]
+        public int CategoryId { get; set; }
+        [Required]
+        [Display(Name = "Trainer")]
         public Nullable<int> TrainerId { get; set; }
         [Required]
+        [Display(Name = "Branch")]
         public Nullable<int> BranchId { get; set; }
         [Required]
+        [Display(Name = "Course Name")]
         public string CourseName { get; set; }
         [Required]
+        [Display(Name = "Course Abb")]
         public string CourseAbb { get; set; }
         [Required]
+        [Display(Name = "Shot Description")]
         public string ShotDescription { get; set; }
         public string Overview { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Offline Seat")]
         public Nullable<int> OfflineSeat { get; set; }
+        [Display(Name = "Online Seat")]
         public Nullable<int> OnlineSeat { get; set; }
+
+        [Display(Name = "Start Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public Nullable<System.DateTime> StartDate { get; set; }
+
+        [Display(Name = "End Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public Nullable<System.DateTime> EndDate { get; set; }
+
+        [Display(Name = "Duration In Hours")]
         public Nullable<double> DurationInHours { get; set; }
+
+        [Display(Name = "Extention Date")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public Nullable<System.DateTime> ExtentionDate { get; set; }
+
+        [Display(Name = "Pending Online Seat")]
         public Nullable<int> PendingOnlineSeat { get; set; }
+        [Display(Name = "Pending Offline Seat")]
         public Nullable<int> PendingOfflineSeat { get; set; }
+        [Display(Name = "Avg Rating")]
         public Nullable<double> AvgRating { get; set; }
+        [Display(Name = "Course PDF")]
         public string CoursePDF { get; set; }
+        [Display(Name = "Course Photo")]
         public string CoursePhoto { get; set; }
+
+        [Display(Name = "Course Video YouTube Link")]
+        [Url]
         public string CourseVideoYouTubeLink { get; set; }
+        [Display(Name = "Course Doc")]
         public Nullable<int> CourseDocId { get; set; }
+        [Display(Name = "Course Fee")]
         public Nullable<decimal> CourseFee { get; set; }
+        [Display(Name = "Course Initial Fee")]
         public Nullable<decimal> CourseInitialFee { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<long> CreatedBy { get; set; }
