@@ -17,35 +17,9 @@ namespace skill.Controllers
         // GET: CategoryMasters
         public ActionResult Index()
         {
-            return View(this.GetCategoryMasters(1));
+            return View(db.CategoryMsts.ToList());
         }
-
-        [HttpPost]
-        public ActionResult Index(int currentPageIndex)
-        {
-            return View(this.GetCategoryMasters(currentPageIndex));
-        }
-
-        private CategoryMstsModel GetCategoryMasters(int currentPage)
-        {
-            int maxRows = 2;
-
-            CategoryMstsModel CategoryMasterModel = new CategoryMstsModel();
-
-            CategoryMasterModel.CategoryMst = (from CategoryMaster in db.CategoryMsts
-                                           select CategoryMaster)
-                        .OrderBy(CategoryMaster => CategoryMaster.CategoryId)
-                        .Skip((currentPage - 1) * maxRows)
-                        .Take(maxRows).ToList();
-
-            double pageCount = (double)((decimal)db.CategoryMsts.Count() / Convert.ToDecimal(maxRows));
-            CategoryMasterModel.PageCount = (int)Math.Ceiling(pageCount);
-
-            CategoryMasterModel.CurrentPageIndex = currentPage;
-
-            return CategoryMasterModel;
-        }
-
+        
         // GET: CategoryMasters/Details/5
         public ActionResult Details(int? id)
         {

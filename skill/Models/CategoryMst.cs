@@ -22,11 +22,16 @@ namespace skill.Models
         }
     
         public int CategoryId { get; set; }
+
+        [Display(Name = "Category Name")]
         [Required]
         public string CategoryName { get; set; }
+
+        [Display(Name = "Category Abb")]
         [Required]
         public string CategoryAbb { get; set; }
-        [RegularExpression("\\d", ErrorMessage = "Please enter valid Seq no.")]
+
+        [Range(0, int.MaxValue, ErrorMessage = "Please enter valid Seq No.")]
         public string SeqNo { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public Nullable<long> CreatedBy { get; set; }

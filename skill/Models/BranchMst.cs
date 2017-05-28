@@ -25,6 +25,7 @@ namespace skill.Models
         public int BranchId { get; set; }
 
         [Required(ErrorMessage = "City Name field is required.")]
+        [Display(Name = "City Name")]
         public Nullable<int> CityId { get; set; }
 
         [Required]
