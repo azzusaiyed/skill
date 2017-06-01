@@ -17,6 +17,7 @@ namespace skill.Models
     {
         public long UserId { get; set; }
         [Required]
+        [Display(Name = "User Name")]
         public string UserName { get; set; }
         [Required]
         public string Email { get; set; }
