@@ -10,6 +10,7 @@ using skill.Models;
 
 namespace skill.Controllers
 {
+    [Authorize]
     public class CandidateAttendancesController : Controller
     {
         private skillEntities db = new skillEntities();

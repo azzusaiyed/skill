@@ -11,16 +11,19 @@ using System.Web.Security;
 
 namespace skill.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private skillEntities db = new skillEntities();
 
+        [AllowAnonymous]
         public ActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Login(UserMst model, string returnUrl)
         {
             // Lets first check if the Model is valid or not
@@ -63,6 +66,7 @@ namespace skill.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
