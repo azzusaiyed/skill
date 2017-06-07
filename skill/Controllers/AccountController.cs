@@ -52,7 +52,7 @@ namespace skill.Controllers
                         }
                         else
                         {
-                            return RedirectToAction("Index", "Home");
+                            return RedirectToAction("Index", "Admin");
                         }
                     }
                     else
@@ -71,7 +71,7 @@ namespace skill.Controllers
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Admin");
         }
 
         protected override void Dispose(bool disposing)
