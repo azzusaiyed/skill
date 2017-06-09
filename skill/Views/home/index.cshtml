@@ -3,9 +3,172 @@
     Layout = "~/Views/Shared/_FrontLayout.cshtml";
 }
  
-<div class="content">
-    <div class="container-fluid">
-        Load from _FrontLayout
+  <!-- Home Slider -->
+<div class="home-slider">
+    <div class="item">
+        <div class="slider-image">
+            <img alt="slide" src="images/slider/B6Presidentfinal.jpg">
+        </div>
+        <div class="slider-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>&nbsp;</h2>
+                        <p>&nbsp;</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="slider-image">
+            <img alt="slide" src="images/slider/VsDantewadaf.jpg">
+        </div>
+        <div class="slider-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>&nbsp;</h2>
+                        <p>&nbsp;</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item">
+        <div class="slider-image">
+            <img alt="slide" src="images/slider/dBanner CCE_2.jpg">
+        </div>
+        <div class="slider-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2>&nbsp;</h2>
+                        <p>&nbsp;</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<!-- Fun Fact -->
+<div class="fun-fact">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 single-fact">
+                <div class="facet-overlay"></div>
+                <div class="fact-wrap">
+                    <div class="fact-icon"><i class="fa fa-leanpub" aria-hidden="true"></i></div>
+                    <div class="fact-details">
+                        <div class="fact-count">220</div>
+                        <div class="fact-info">Training Courses</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 single-fact">
+                <div class="facet-overlay"></div>
+                <div class="fact-wrap">
+                    <div class="fact-icon"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                    <div class="fact-details">
+                        <div class="fact-count">521</div>
+                        <div class="fact-info">Rregistred Trainer</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 single-fact">
+                <div class="facet-overlay"></div>
+                <div class="fact-wrap">
+                    <div class="fact-icon"><i class="fa fa-book" aria-hidden="true"></i></div>
+                    <div class="fact-details">
+                        <div class="fact-count">2503</div>
+                        <div class="fact-info">Training Attendance</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 single-fact">
+                <div class="facet-overlay"></div>
+                <div class="fact-wrap">
+                    <div class="fact-icon"><i class="fa fa-headphones" aria-hidden="true"></i></div>
+                    <div class="fact-details">
+                        <div class="fact-count">1030</div>
+                        <div class="fact-info">Got the Jobs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Intro -->
+<div class="intro pd-top-100 pd-bottom-100 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h1 class="intro-title">Welcome to <span>Skill foundation</span></h1>
+                <p>Skill foundation to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Recent Cause -->
+@Html.Partial("~/Views/partial/_recentCourse.cshtml")
+
+<!-- Testimonial -->
+<div id="testimonials" class="testimonial-section pd-top-80 pd-bottom-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="section-title">Testimonials <i class="fa fa-heart"></i></h2>
+            </div>
+            <div class="col-sm-12 testimonial-carousel owl-carousel">
+                <div class="item">
+                    <h3 class="tm-title">Great job I've ever had</h3>
+                    <p>
+                        Contrary to popular belief, rorem ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+                    </p>
+                    <img src="images/reviewer/1.jpg" alt="client">
+                    <div class="testimonial-client">John Doe <span>Assistant Manager, GSM Group</span></div>
+                </div>
+                <div class="item">
+                    <h3 class="tm-title">First true generator on the Interne</h3>
+                    <p>
+                        Standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
+                    </p>
+                    <img src="images/reviewer/2.jpg" alt="client">
+                    <div class="testimonial-client">John Doe <span>Assistant Manager, GSM Group</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Newletter -->
+<div class="newsletter-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h2 class="title">Newsletter</h2>
+                        <p>Submit email to subscribe for newsletter</p>
+                    </div>
+                    <div class="col-sm-9">
+                        <form class="newsletter-form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="exampleInputAmount">
+                                    <div class="input-group-addon search-button">
+                                        <button class="btn btn-red" type="submit">SUBSCRIBE</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
  
