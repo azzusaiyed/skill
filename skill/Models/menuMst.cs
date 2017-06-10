@@ -22,7 +22,9 @@ namespace skill.Models
         }
     
         public int MenuID { get; set; }
+        [Display(Name = "Parent Menu")]
         public Nullable<int> ParentMenuID { get; set; }
+        [Display(Name = "Menu Type")]
         public Nullable<int> MenuType { get; set; }
         public bool IsAdminPage { get; set; }
         [Required]
@@ -30,8 +32,10 @@ namespace skill.Models
         public string NameGuj { get; set; }
         [Required]
         public string URL { get; set; }
+        [Display(Name = "Show In Menu")]
         public bool ShowInMenu { get; set; }
         public string Icon { get; set; }
+        [Display(Name = "Seq No.")]
         public Nullable<int> SeqNo { get; set; }
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }

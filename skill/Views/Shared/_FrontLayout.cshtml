@@ -7,25 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Skill foundation</title>
     <!--Fav and touch icons-->
-    <link rel="icon" href="images/favicon.ico">
+    <link rel="icon" href="~/images/favicon.ico">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="images/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="images/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="~/images/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="~/images/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="~/images/apple-touch-icon-152x152.png">
     <!--Common Styles Plugins-->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
-    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
-    <link rel="stylesheet" type="text/css" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
-    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/css/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="~/css/magnific-popup.css">
     <!--Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <!--Custom Style-->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/space.css">
-    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <link rel="stylesheet" type="text/css" href="~/css/space.css">
+    <link rel="stylesheet" type="text/css" href="~/css/responsive.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -115,59 +115,11 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html"><img class="retina" src="images/logo.png" alt="logo"></a>
+                        <a class="navbar-brand" href="index.html"><img class="retina" src="~/images/logo.png" alt="logo"></a>
                     </div>
                     <div class="collapse navbar-collapse" id="main-navbar">
-                        <ul class="nav navbar-nav navbar-left">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About Us <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Who We Are</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">What We Do</a>
-                                    </li>
-                                    <li><a href="faq.html">Key Differentiators</a></li>
-                                    <li><a href="gallery.html">Leadership Team</a></li>
-                                    <li><a href="element.html">Awards & Recognition</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Services <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="event.html">Training</a></li>
-                                    <li><a href="event-details.html">Content Development</a></li>
-                                    <li><a href="event-details.html">Enterprise Development Services</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Institutes <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="blog.html">Our Model</a></li>
-                                    <li><a href="blog-2.html">Our Presence</a></li>
-                                    <li><a href="single-blog.html">Institute Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="shop.html">Courses Offered</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Our Partners <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="shop.html">Government</a></li>
-                                    <li><a href="product.html">Corporate</a></li>
-                                    <li><a href="cart.html">Employer</a></li>
-
-                                </ul>
-                            </li>
-
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right hidden-xs" style="display:none">
-                            <li class="top-cart">
-                                <i class="fa fa-shopping-bag"></i>
-                                <a href="cart.html" class="top-amount">$0.00</a>
-                            </li>
-                        </ul>
+                        @*@Html.Partial("~/Views/partial/_mainNavbar.cshtml")*@
+                        @Html.Action("MainNavigation", "Home")
                     </div>
                 </div>
             </nav>
@@ -183,7 +135,7 @@
                 <div class="row">
                     <div class="col-md-3 col-sm-6 footer-widget">
                         <div class="footer-logo">
-                            <img class="retina" src="images/logo-footer.png" alt="logo">
+                            <img class="retina" src="~/images/logo-footer.png" alt="logo">
                             <p>Lorem ipsum dolor sit amet, his ferri probatus neglegentur te, eum affert legere nominavi ad, eu enim semper dictas ius. Legimus delicata an sit. Sea ex nonumes molestie. Cu salutandi scribentur.</p>
                             <div class="footer-social">
                                 <a href="#"><i class="fa fa-twitter-square"></i></a>
@@ -247,25 +199,25 @@
         </div>
     </div>
     <!--Common JS Plugin-->
-    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/retina.min.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="js/jquery.scrollUp.min.js"></script>
-    <script type="text/javascript" src="js/owl.carousel.min.js"></script>
-    <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
-    <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
-    <script type="text/javascript" src="js/headroom.min.js"></script>
-    <script type="text/javascript" src="js/jQuery.headroom.min.js"></script>
-    <script type="text/javascript" src="js/sticky-kit.min.js"></script>
-    <script type="text/javascript" src="js/jquery.countdown.min.js"></script>
-    <script type="text/javascript" src="js/jquery.waypoints.js"></script>
-    <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="js/jquery.counterup.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="~/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/js/retina.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.scrollUp.min.js"></script>
+    <script type="text/javascript" src="~/js/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="~/js/isotope.pkgd.min.js"></script>
+    <script type="text/javascript" src="~/js/imagesloaded.pkgd.min.js"></script>
+    <script type="text/javascript" src="~/js/headroom.min.js"></script>
+    <script type="text/javascript" src="~/js/jQuery.headroom.min.js"></script>
+    <script type="text/javascript" src="~/js/sticky-kit.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.waypoints.js"></script>
+    <script type="text/javascript" src="~/js/jquery.magnific-popup.min.js"></script>
+    <script type="text/javascript" src="~/js/jquery.counterup.min.js"></script>
     <!-- Google Map -->
     @*<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYMloK_kzsasOQXg-xhGxnwvlAU3HTZWg&amp;callback=initMap" async defer></script>*@
     <!-- Custom JS -->
-    <script type="text/javascript" src="js/custom.js"></script>
+    <script type="text/javascript" src="~/js/custom.js"></script>
 </body>
 </html>

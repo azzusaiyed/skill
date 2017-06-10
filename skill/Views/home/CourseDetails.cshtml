@@ -1,0 +1,159 @@
+﻿@model skill.Models.CourseMst
+@{
+    Layout = "~/Views/Shared/_FrontLayout.cshtml";
+
+    var startDate = Model.StartDate != null ? Model.StartDate.Value.ToString("dd MMM yyyy") : string.Empty;
+    var endDate = Model.StartDate != null ? Model.EndDate.Value.ToString("dd MMM yyyy") : string.Empty;
+    decimal _courseFees = Model.CourseFee != null ? Model.CourseFee.Value : 0;
+    var courseFees = String.Format(System.Globalization.CultureInfo.CurrentCulture, "{0:C}", _courseFees);
+    
+}
+
+ <!-- page title -->
+<div class="page-title-section">
+    <div class="page-title-wrap">
+        <div class="page-title-overlay"></div>
+        <div class="page-title-info">
+            <ol class="breadcrumb">
+                <li><a href="~/">Home</a></li>
+                <li class="active">@Model.CourseName</li>
+            </ol>
+            <h1 class="page-title">@Model.CourseName</h1>
+        </div>
+    </div>
+</div>
+
+<!-- product -->
+<div class="product-page pd-top-100 pd-bottom-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 hidden-md hidden-sm hidden-xs">
+                <div class="widget widget-category shop-widget">
+                    <h3 class="widget-title">Category</h3>
+                    <ul>
+                        <li class="category-list"><a href="#">Agriculture</a></li>
+                        <li class="category-list"><a href="#">Apparel</a></li>
+                        <li class="category-list"><a href="#">Automotive</a></li>
+                        <li class="category-list"><a href="#">Banking & Finance</a></li>
+                        <li class="category-list"><a href="#">Beauty & Wellness</a></li>
+                        <li class="category-list"><a href="#">Capital Goods</a></li>
+                        <li class="category-list"><a href="#">Construction</a></li>
+                        <li class="category-list"><a href="#">Electronics</a></li>
+                        <li class="category-list"><a href="#">Fashion</a></li>
+                        <li class="category-list"><a href="#">Handicraft & Carpet</a></li>
+                        <li class="category-list"><a href="#">Healthcare</a></li>
+                        <li class="category-list"><a href="#">Hospitality</a></li>
+                        <li class="category-list"><a href="#">Iron & Steel</a></li>
+                        <li class="category-list"><a href="#">IT</a></li>
+                        <li class="category-list"><a href="#">IT/ITes: Nasscom</a></li>
+                        <li class="category-list"><a href="#">Leather</a></li>
+                        <li class="category-list"><a href="#">Logistics</a></li>
+                        <li class="category-list"><a href="#">Plumbing</a></li>
+                        <li class="category-list"><a href="#">Power</a></li>
+                        <li class="category-list"><a href="#">Professional Skills</a></li>
+                        <li class="category-list"><a href="#">Retail</a></li>
+                        <li class="category-list"><a href="#">Security</a></li>
+                        <li class="category-list"><a href="#">Sports</a></li>
+                        <li class="category-list"><a href="#">Telecom</a></li>
+                        <li class="category-list"><a href="#">Others</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="single-product-main-thumbnail">
+                            <img src="~/images/causes/cause-gellary/3.jpg" alt="image">
+                        </div>
+                        <div class="single-product-thumbnails">
+                            <a data-effect="mfp-zoom-in" href="~/images/shop/194194data_operator.png"><img src="~/images/shop/194194data_operator.png" alt="image"></a>
+                            <a data-effect="mfp-zoom-in" href="~/images/shop/216OYO14424.jpg"><img src="~/images/shop/216OYO14424.jpg" alt="image"></a>
+                            <a data-effect="mfp-zoom-in" href="~/images/shop/189OIS_1256.jpg"><img src="~/images/shop/189OIS_1256.jpg" alt="image"></a>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="product-summary">
+                            <h2 class="title">@Model.CourseName</h2>
+                            <div class="product-rating">
+                                <span class="rating-icon"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
+                                <span>( 5 customer reviews )</span>
+                            </div>
+                            <div class="price-amount">@courseFees</div>
+                            <p>@Model.ShotDescription
+                            </p>
+                            <div class="quantity">
+                                @Html.ActionLink("Buy Now", "login", null, new { @class = "btn" })
+
+                                @*<a class="btn" href="login.html" style="">Buy Now</a>*@
+                            </div>
+                            <div class="product-meta">
+                                <div class="sku"><span>TRAINER :</span> @Model.TrainerMst.Name</div>
+                                <div class="product-category"><span>TRAINING DURATION :</span> @startDate to @endDate</div>
+                                <div class="product-tag"><span>CATEGORY :</span> @Model.CategoryMst.CategoryName @*IT, Banking, Finance*@</div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12 product-tabs">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
+                            <li role="presentation"><a href="#extra" aria-controls="extra" role="tab" data-toggle="tab">Additional Info</a></li>
+                            <li role="presentation"><a href="#review" aria-controls="review" role="tab" data-toggle="tab">Reviews (5)</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane fade in active" id="description">
+                                <h3 class="tabs-title">Product description</h3>
+                                <p>@Model.Description</p>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="extra">
+                                <h3 class="tabs-title">Additional Info</h3>
+                            </div>
+                            <div role="tabpanel" class="tab-pane fade" id="review">
+                                <h3 class="tabs-title">5 reviews for Ninja Silhouette</h3>
+                                <div class=" ">
+                                    <div class="blog-comment shop-comment-wrapper">
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <img src="~/images/reviewer/1.jpg" alt="image">
+                                            </div>
+                                            <div class="media-body">
+                                                <span class="comment-title">Client Name</span>
+                                                <span class="comment-date"><i class="fa fa-calendar-o"></i>21 January, 2016 at 10:00am</span>
+                                                <p>Donec rutrum Donec rutrum hendrerit pretium. Sed eu semper purus. Nunc ullamcorper porta mauris at aliquet. hendrerit pretium. Sed eu semper purus. Nunc ullamcorper porta mauris at aliquet.</p>
+                                                <a href="#"><i class="fa fa-reply"></i> Reply</a>
+                                            </div>
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <img src="~/images/reviewer/2.jpg" alt="image">
+                                            </div>
+                                            <div class="media-body">
+                                                <span class="comment-title">Client Name</span>
+                                                <span class="comment-date"><i class="fa fa-calendar-o"></i>21 January, 2016 at 10:00am</span>
+                                                <p>Donec rutrum hendrerit pretium. Sed eu semper purus. Nunc ullamcorper porta mauris at aliquet.</p>
+                                                <a href="#"><i class="fa fa-reply"></i> Reply</a>
+                                            </div>
+                                        </div>
+                                        <div class="media">
+                                            <div class="media-left">
+                                                <img src="~/images/reviewer/3.jpg" alt="image">
+                                            </div>
+                                            <div class="media-body">
+                                                <span class="comment-title">Client Name</span>
+                                                <span class="comment-date"><i class="fa fa-calendar-o"></i>21 January, 2016 at 10:00am</span>
+                                                <p>Donec rutrum hendrerit pretium. Sed eu semper purus. Nunc ullamcorper porta mauris at aliquet.</p>
+                                                <a href="#"><i class="fa fa-reply"></i> Reply</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

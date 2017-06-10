@@ -1,0 +1,29 @@
+﻿@model IEnumerable<skill.Models.menuMst>
+@{
+    var masterModel = Model.Where(s => s.ParentMenuID == null || s.ParentMenuID == 0).ToList();
+}
+<ul class="nav navbar-nav navbar-left">
+    @foreach (var item in masterModel)
+    {
+        var childModel = Model.Where(s => s.ParentMenuID == item.MenuID).ToList();
+
+        if (childModel != null && childModel.Count > 0)
+        {
+            <li class="dropdown">
+                <a href="@item.URL" class="dropdown-toggle" data-toggle="dropdown">@item.Name <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    @foreach (var childItem in childModel)
+                    {
+                        <li>
+                            <a href="@childItem.URL" class="dropdown-toggle" data-toggle="dropdown">@childItem.Name</a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+        else
+        {
+            <li><a href="@item.URL">@item.Name</a></li>
+        }
+    }
+</ul>

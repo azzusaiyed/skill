@@ -38,6 +38,7 @@ namespace skill.Controllers
         // GET: menuMasters/Create
         public ActionResult Create()
         {
+            ViewBag.ParentMenuID = new SelectList(db.menuMsts.OrderBy(o=> o.Name).Where(s => s.IsActive == true && s.IsDeleted == false && s.ShowInMenu == true), "MenuID", "Name", "--Select--");
             return View();
         }
 
@@ -50,6 +51,14 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                menuMst.CreatedBy = 1;
+                menuMst.CreatedDate = DateTime.Now;
+                menuMst.ModifiedBy = 1;
+                menuMst.ModifiedDate = DateTime.Now;
+                menuMst.IpAddress = "";
+                menuMst.HostName = "";
+
                 db.menuMsts.Add(menuMst);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,6 +79,7 @@ namespace skill.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ParentMenuID = new SelectList(db.menuMsts.OrderBy(o => o.Name).Where(s => s.IsActive == true && s.IsDeleted == false && s.ShowInMenu == true), "MenuID", "Name", menuMst.ParentMenuID);
             return View(menuMst);
         }
 
@@ -82,6 +92,14 @@ namespace skill.Controllers
         {
             if (ModelState.IsValid)
             {
+                //[TODO]
+                menuMst.CreatedBy = 1;
+                menuMst.CreatedDate = DateTime.Now;
+                menuMst.ModifiedBy = 1;
+                menuMst.ModifiedDate = DateTime.Now;
+                menuMst.IpAddress = "";
+                menuMst.HostName = "";
+
                 db.Entry(menuMst).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

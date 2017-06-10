@@ -685,6 +685,8 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Shared\_FrontLayout.cshtml" />
     <Content Include="Views\Partial\_recentCourse.cshtml" />
+    <Content Include="Views\Partial\_mainNavbar.cshtml" />
+    <Content Include="Views\home\CourseDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

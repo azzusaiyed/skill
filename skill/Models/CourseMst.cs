@@ -39,20 +39,28 @@ namespace skill.Models
         [Required]
         [Display(Name = "Course Abb")]
         public string CourseAbb { get; set; }
+
         [Required]
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Shot Description")]
         public string ShotDescription { get; set; }
+
         public string Overview { get; set; }
+
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
         [Display(Name = "Offline Seat")]
         public Nullable<int> OfflineSeat { get; set; }
         [Display(Name = "Online Seat")]
         public Nullable<int> OnlineSeat { get; set; }
 
+        [Required]
         [Display(Name = "Start Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public Nullable<System.DateTime> StartDate { get; set; }
 
+        [Required]
         [Display(Name = "End Date")]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public Nullable<System.DateTime> EndDate { get; set; }
@@ -80,6 +88,8 @@ namespace skill.Models
         public string CourseVideoYouTubeLink { get; set; }
         [Display(Name = "Course Doc")]
         public Nullable<int> CourseDocId { get; set; }
+
+        [Required]
         [Display(Name = "Course Fee")]
         public Nullable<decimal> CourseFee { get; set; }
         [Display(Name = "Course Initial Fee")]
