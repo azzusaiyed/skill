@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using skill.Models;
+using System.IO;
 
 namespace skill.Controllers
 {
@@ -53,7 +54,7 @@ namespace skill.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CourseId,CategoryId,TrainerId,BranchId,CourseName,CourseAbb,ShotDescription,Overview,Description,OfflineSeat,OnlineSeat,StartDate,EndDate,DurationInHours,ExtentionDate,PendingOnlineSeat,PendingOfflineSeat,AvgRating,CoursePDF,CoursePhoto,CourseVideoYouTubeLink,CourseDocId,CourseFee,CourseInitialFee,CreatedDate,CreatedBy,ModifyDate,ModifyBy,IsActive,IsDeleted,IpAddress")] CourseMst courseMst)
+        public ActionResult Create(HttpPostedFileBase postedFile,[Bind(Include = "CourseId,CategoryId,TrainerId,BranchId,CourseName,CourseAbb,ShotDescription,Overview,Description,OfflineSeat,OnlineSeat,StartDate,EndDate,DurationInHours,ExtentionDate,PendingOnlineSeat,PendingOfflineSeat,AvgRating,CoursePDF,CoursePhoto,CourseVideoYouTubeLink,CourseDocId,CourseFee,CourseInitialFee,CreatedDate,CreatedBy,ModifyDate,ModifyBy,IsActive,IsDeleted,IpAddress")] CourseMst courseMst)
         {
             if (ModelState.IsValid)
             {
@@ -66,6 +67,25 @@ namespace skill.Controllers
 
                 db.CourseMsts.Add(courseMst);
                 db.SaveChanges();
+
+                var id = courseMst.CourseId;
+                if (postedFile != null)
+                {
+                    string path = Server.MapPath("~/Uploads/Course/" + courseMst.CourseId + "/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+
+                    postedFile.SaveAs(path + Path.GetFileName(postedFile.FileName));
+                    courseMst.CoursePhoto = "/Uploads/Course/" + courseMst.CourseId + "/" + Path.GetFileName(postedFile.FileName);
+
+                    db.Entry(courseMst).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                    ViewBag.Message = "File uploaded successfully.";
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -73,6 +93,7 @@ namespace skill.Controllers
         }
 
         // GET: CourseMasters/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -97,10 +118,24 @@ namespace skill.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CourseId,CategoryId,TrainerId,BranchId,CourseName,CourseAbb,ShotDescription,Overview,Description,OfflineSeat,OnlineSeat,StartDate,EndDate,DurationInHours,ExtentionDate,PendingOnlineSeat,PendingOfflineSeat,AvgRating,CoursePDF,CoursePhoto,CourseVideoYouTubeLink,CourseDocId,CourseFee,CourseInitialFee,CreatedDate,CreatedBy,ModifyDate,ModifyBy,IsActive,IsDeleted,IpAddress")] CourseMst courseMst)
+        public ActionResult Edit(HttpPostedFileBase postedFile, [Bind(Include = "CourseId,CategoryId,TrainerId,BranchId,CourseName,CourseAbb,ShotDescription,Overview,Description,OfflineSeat,OnlineSeat,StartDate,EndDate,DurationInHours,ExtentionDate,PendingOnlineSeat,PendingOfflineSeat,AvgRating,CoursePDF,CoursePhoto,CourseVideoYouTubeLink,CourseDocId,CourseFee,CourseInitialFee,CreatedDate,CreatedBy,ModifyDate,ModifyBy,IsActive,IsDeleted,IpAddress")] CourseMst courseMst)
         {
             if (ModelState.IsValid)
             {
+                if (postedFile != null)
+                {
+                    string path = Server.MapPath("~/Uploads/Course/" + courseMst.CourseId + "/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+
+                    postedFile.SaveAs(path + Path.GetFileName(postedFile.FileName));
+                    courseMst.CoursePhoto = "/Uploads/Course/" + courseMst.CourseId + "/" + Path.GetFileName(postedFile.FileName);
+
+                    ViewBag.Message = "File uploaded successfully.";
+                }
+
                 //[TODO]
                 courseMst.CreatedBy = 1;
                 courseMst.CreatedDate = DateTime.Now;

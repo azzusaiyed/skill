@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="~/Content/jquery-ui.css">
 <script src="~/Scripts/jquery-ui.js"></script>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "CourseMasters", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -169,7 +169,9 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.CoursePhoto, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.EditorFor(model => model.CoursePhoto, new { htmlAttributes = new { @class = "form-control" } })
+                    <input type="file" name="postedFile" />
+                    <img width="100" src="@Model.CoursePhoto" />
+                    @Html.HiddenFor(model => model.CoursePhoto, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.CoursePhoto, "", new { @class = "text-danger" })
                 </div>
             </div>
