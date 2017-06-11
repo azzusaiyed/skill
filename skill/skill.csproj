@@ -246,6 +246,7 @@
     <Compile Include="Models\CourseRegistrationDetail.cs">
       <DependentUpon>SkillModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomAuthorization.cs" />
     <Compile Include="Models\DistrictMst.cs">
       <DependentUpon>SkillModel.tt</DependentUpon>
     </Compile>
@@ -534,11 +535,21 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\AppConfigs\Create.cshtml" />
-    <Content Include="Views\AppConfigs\Delete.cshtml" />
-    <Content Include="Views\AppConfigs\Details.cshtml" />
-    <Content Include="Views\AppConfigs\Edit.cshtml" />
-    <Content Include="Views\AppConfigs\Index.cshtml" />
+    <Content Include="Views\Error\Create.cshtml" />
+    <Content Include="Views\Error\Delete.cshtml" />
+    <Content Include="Views\Error\Details.cshtml" />
+    <Content Include="Views\Error\Edit.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\home\index.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Shared\_FrontLayout.cshtml" />
+    <Content Include="Views\Partial\_recentCourse.cshtml" />
+    <Content Include="Views\Partial\_mainNavbar.cshtml" />
+    <Content Include="Views\home\CourseDetails.cshtml" />
+    <Content Include="Views\home\login.cshtml" />
+    <Content Include="Views\home\Checkout.cshtml" />
+    <Content Include="Views\Account\AdminLogin.cshtml" />
     <Content Include="Views\BranchMsts\Create.cshtml" />
     <Content Include="Views\BranchMsts\Delete.cshtml" />
     <Content Include="Views\BranchMsts\Details.cshtml" />
@@ -594,11 +605,6 @@
     <Content Include="Views\CourseMasters\Details.cshtml" />
     <Content Include="Views\CourseMasters\Edit.cshtml" />
     <Content Include="Views\CourseMasters\Index.cshtml" />
-    <Content Include="Views\DistrictMasters\Create.cshtml" />
-    <Content Include="Views\DistrictMasters\Delete.cshtml" />
-    <Content Include="Views\DistrictMasters\Details.cshtml" />
-    <Content Include="Views\DistrictMasters\Edit.cshtml" />
-    <Content Include="Views\DistrictMasters\Index.cshtml" />
     <Content Include="Views\CoursePaymentDetails\Create.cshtml" />
     <Content Include="Views\CoursePaymentDetails\Delete.cshtml" />
     <Content Include="Views\CoursePaymentDetails\Details.cshtml" />
@@ -609,16 +615,16 @@
     <Content Include="Views\CourseRegistrationDetails\Details.cshtml" />
     <Content Include="Views\CourseRegistrationDetails\Edit.cshtml" />
     <Content Include="Views\CourseRegistrationDetails\Index.cshtml" />
+    <Content Include="Views\DistrictMasters\Create.cshtml" />
+    <Content Include="Views\DistrictMasters\Delete.cshtml" />
+    <Content Include="Views\DistrictMasters\Details.cshtml" />
+    <Content Include="Views\DistrictMasters\Edit.cshtml" />
+    <Content Include="Views\DistrictMasters\Index.cshtml" />
     <Content Include="Views\DocumentMasters\Create.cshtml" />
     <Content Include="Views\DocumentMasters\Delete.cshtml" />
     <Content Include="Views\DocumentMasters\Details.cshtml" />
     <Content Include="Views\DocumentMasters\Edit.cshtml" />
     <Content Include="Views\DocumentMasters\Index.cshtml" />
-    <Content Include="Views\Error\Create.cshtml" />
-    <Content Include="Views\Error\Delete.cshtml" />
-    <Content Include="Views\Error\Details.cshtml" />
-    <Content Include="Views\Error\Edit.cshtml" />
-    <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\LanguageMasters\Create.cshtml" />
     <Content Include="Views\LanguageMasters\Delete.cshtml" />
     <Content Include="Views\LanguageMasters\Details.cshtml" />
@@ -634,16 +640,16 @@
     <Content Include="Views\RegistrationMasters\Details.cshtml" />
     <Content Include="Views\RegistrationMasters\Edit.cshtml" />
     <Content Include="Views\RegistrationMasters\Index.cshtml" />
-    <Content Include="Views\roleMenuMappings\Create.cshtml" />
-    <Content Include="Views\roleMenuMappings\Delete.cshtml" />
-    <Content Include="Views\roleMenuMappings\Details.cshtml" />
-    <Content Include="Views\roleMenuMappings\Edit.cshtml" />
-    <Content Include="Views\roleMenuMappings\Index.cshtml" />
     <Content Include="Views\roleMasters\Create.cshtml" />
     <Content Include="Views\roleMasters\Delete.cshtml" />
     <Content Include="Views\roleMasters\Details.cshtml" />
     <Content Include="Views\roleMasters\Edit.cshtml" />
     <Content Include="Views\roleMasters\Index.cshtml" />
+    <Content Include="Views\roleMenuMappings\Create.cshtml" />
+    <Content Include="Views\roleMenuMappings\Delete.cshtml" />
+    <Content Include="Views\roleMenuMappings\Details.cshtml" />
+    <Content Include="Views\roleMenuMappings\Edit.cshtml" />
+    <Content Include="Views\roleMenuMappings\Index.cshtml" />
     <Content Include="Views\SiteConfigs\Create.cshtml" />
     <Content Include="Views\SiteConfigs\Delete.cshtml" />
     <Content Include="Views\SiteConfigs\Details.cshtml" />
@@ -679,14 +685,7 @@
     <Content Include="Views\userRoles\Details.cshtml" />
     <Content Include="Views\userRoles\Edit.cshtml" />
     <Content Include="Views\userRoles\Index.cshtml" />
-    <Content Include="Views\home\index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Shared\_FrontLayout.cshtml" />
-    <Content Include="Views\Partial\_recentCourse.cshtml" />
-    <Content Include="Views\Partial\_mainNavbar.cshtml" />
-    <Content Include="Views\home\CourseDetails.cshtml" />
+    <Content Include="Views\Shared\_FrontLoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

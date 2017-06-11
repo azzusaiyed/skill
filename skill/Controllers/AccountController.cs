@@ -17,14 +17,15 @@ namespace skill.Controllers
         private skillEntities db = new skillEntities();
 
         [AllowAnonymous]
-        public ActionResult Login()
+        public ActionResult AdminLogin(string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
         [AllowAnonymous]
-        public ActionResult Login(UserMst model, string returnUrl)
+        public ActionResult AdminLogin(UserMst model, string returnUrl)
         {
             // Lets first check if the Model is valid or not
             //if (ModelState.IsValid)
