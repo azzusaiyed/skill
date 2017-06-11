@@ -78,8 +78,10 @@ namespace skill.Models
         public Nullable<int> PendingOfflineSeat { get; set; }
         [Display(Name = "Avg Rating")]
         public Nullable<double> AvgRating { get; set; }
+
         [Display(Name = "Course PDF")]
         public string CoursePDF { get; set; }
+
         [Display(Name = "Course Photo")]
         public string CoursePhoto { get; set; }
 

@@ -153,7 +153,10 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CoursePDF)
+            @if (!string.IsNullOrEmpty(Model.CoursePDF))
+            {
+                <a href="@Model.CoursePDF" target="_blank">Course PDF</a>
+            }
         </dd>
 
         <dt>

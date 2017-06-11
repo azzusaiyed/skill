@@ -161,7 +161,12 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.CoursePDF, htmlAttributes: new { @class = "control-label col-md-4" })
                 <div class="col-md-8">
-                    @Html.EditorFor(model => model.CoursePDF, new { htmlAttributes = new { @class = "form-control" } })
+                    <input type="file" name="coursePDFFile" />
+                    @if (!string.IsNullOrEmpty(Model.CoursePDF))
+                    {
+                        <a href="@Model.CoursePDF" target="_blank">Course PDF</a>
+                    }
+                    @Html.HiddenFor(model => model.CoursePDF, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.CoursePDF, "", new { @class = "text-danger" })
                 </div>
             </div>

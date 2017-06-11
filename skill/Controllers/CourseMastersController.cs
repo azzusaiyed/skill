@@ -54,7 +54,7 @@ namespace skill.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(HttpPostedFileBase postedFile,[Bind(Include = "CourseId,CategoryId,TrainerId,BranchId,CourseName,CourseAbb,ShotDescription,Overview,Description,OfflineSeat,OnlineSeat,StartDate,EndDate,DurationInHours,ExtentionDate,PendingOnlineSeat,PendingOfflineSeat,AvgRating,CoursePDF,CoursePhoto,CourseVideoYouTubeLink,CourseDocId,CourseFee,CourseInitialFee,CreatedDate,CreatedBy,ModifyDate,ModifyBy,IsActive,IsDeleted,IpAddress")] CourseMst courseMst)
+        public ActionResult Create(HttpPostedFileBase postedFile, HttpPostedFileBase coursePDFFile, [Bind(Include = "CourseId,CategoryId,TrainerId,BranchId,CourseName,CourseAbb,ShotDescription,Overview,Description,OfflineSeat,OnlineSeat,StartDate,EndDate,DurationInHours,ExtentionDate,PendingOnlineSeat,PendingOfflineSeat,AvgRating,CoursePDF,CoursePhoto,CourseVideoYouTubeLink,CourseDocId,CourseFee,CourseInitialFee,CreatedDate,CreatedBy,ModifyDate,ModifyBy,IsActive,IsDeleted,IpAddress")] CourseMst courseMst)
         {
             if (ModelState.IsValid)
             {
@@ -82,10 +82,20 @@ namespace skill.Controllers
 
                     db.Entry(courseMst).State = EntityState.Modified;
                     db.SaveChanges();
-
-                    ViewBag.Message = "File uploaded successfully.";
                 }
+                if (coursePDFFile != null)
+                {
+                    string path = Server.MapPath("~/Uploads/Course/" + courseMst.CourseId + "/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    coursePDFFile.SaveAs(path + Path.GetFileName(coursePDFFile.FileName));
+                    courseMst.CoursePDF = "/Uploads/Course/" + courseMst.CourseId + "/" + Path.GetFileName(coursePDFFile.FileName);
 
+                    db.Entry(courseMst).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
 
@@ -118,7 +128,7 @@ namespace skill.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(HttpPostedFileBase postedFile, [Bind(Include = "CourseId,CategoryId,TrainerId,BranchId,CourseName,CourseAbb,ShotDescription,Overview,Description,OfflineSeat,OnlineSeat,StartDate,EndDate,DurationInHours,ExtentionDate,PendingOnlineSeat,PendingOfflineSeat,AvgRating,CoursePDF,CoursePhoto,CourseVideoYouTubeLink,CourseDocId,CourseFee,CourseInitialFee,CreatedDate,CreatedBy,ModifyDate,ModifyBy,IsActive,IsDeleted,IpAddress")] CourseMst courseMst)
+        public ActionResult Edit(HttpPostedFileBase postedFile, HttpPostedFileBase coursePDFFile, [Bind(Include = "CourseId,CategoryId,TrainerId,BranchId,CourseName,CourseAbb,ShotDescription,Overview,Description,OfflineSeat,OnlineSeat,StartDate,EndDate,DurationInHours,ExtentionDate,PendingOnlineSeat,PendingOfflineSeat,AvgRating,CoursePDF,CoursePhoto,CourseVideoYouTubeLink,CourseDocId,CourseFee,CourseInitialFee,CreatedDate,CreatedBy,ModifyDate,ModifyBy,IsActive,IsDeleted,IpAddress")] CourseMst courseMst)
         {
             if (ModelState.IsValid)
             {
@@ -129,11 +139,18 @@ namespace skill.Controllers
                     {
                         Directory.CreateDirectory(path);
                     }
-
                     postedFile.SaveAs(path + Path.GetFileName(postedFile.FileName));
                     courseMst.CoursePhoto = "/Uploads/Course/" + courseMst.CourseId + "/" + Path.GetFileName(postedFile.FileName);
-
-                    ViewBag.Message = "File uploaded successfully.";
+                }
+                if (coursePDFFile != null)
+                {
+                    string path = Server.MapPath("~/Uploads/Course/" + courseMst.CourseId + "/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    coursePDFFile.SaveAs(path + Path.GetFileName(coursePDFFile.FileName));
+                    courseMst.CoursePDF = "/Uploads/Course/" + courseMst.CourseId + "/" + Path.GetFileName(coursePDFFile.FileName);
                 }
 
                 //[TODO]
